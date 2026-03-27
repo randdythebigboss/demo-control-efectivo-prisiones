@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Control de Efectivo — DGP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-shell">
+
+  <!-- ═══ SIDEBAR ═══ -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-shield">DGP</div>
+      <div class="brand-text">
+        <span class="brand-name" data-i18n="brand.name">Control de Efectivo</span>
+        <span class="brand-sub" data-i18n="brand.sub">Dir. General de Prisiones</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a class="nav-item active" href="#" data-section="dashboard">
+        <span class="nav-icon">&#9632;</span>
+        <span class="nav-label" data-i18n="nav.dashboard">Dashboard</span>
+      </a>
+
+      <div class="nav-group">
+        <button class="nav-group-toggle" data-group="admin">
+          <span class="nav-icon">&#9881;</span>
+          <span class="nav-label" data-i18n="nav.admin">Administración</span>
+          <span class="nav-caret">&#8250;</span>
+        </button>
+        <div class="nav-group-items" id="group-admin">
+          <a class="nav-sub-item" href="#" data-section="admin-prison-centers"><span data-i18n="nav.admin.prisonCenters">Centros Penitenciarios</span></a>
+          <a class="nav-sub-item" href="#" data-section="admin-provinces"><span data-i18n="nav.admin.provinces">Provincias</span></a>
+          <a class="nav-sub-item" href="#" data-section="admin-account-types"><span data-i18n="nav.admin.accountTypes">Tipos de Cuenta</span></a>
+          <a class="nav-sub-item" href="#" data-section="admin-users"><span data-i18n="nav.admin.users">Usuarios y Roles</span></a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <button class="nav-group-toggle" data-group="inmates">
+          <span class="nav-icon">&#128100;</span>
+          <span class="nav-label" data-i18n="nav.inmates">Gestión de Reclusos</span>
+          <span class="nav-caret">&#8250;</span>
+        </button>
+        <div class="nav-group-items" id="group-inmates">
+          <a class="nav-sub-item" href="#" data-section="inmates-registration"><span data-i18n="nav.inmates.registration">Registro de Reclusos</span></a>
+          <a class="nav-sub-item" href="#" data-section="inmates-accounts"><span data-i18n="nav.inmates.accounts">Apertura de Cuentas</span></a>
+          <a class="nav-sub-item" href="#" data-section="inmates-balance"><span data-i18n="nav.inmates.balance">Consulta de Saldo</span></a>
+          <a class="nav-sub-item" href="#" data-section="inmates-history"><span data-i18n="nav.inmates.history">Historial de Transacciones</span></a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <button class="nav-group-toggle" data-group="transactions">
+          <span class="nav-icon">&#8597;</span>
+          <span class="nav-label" data-i18n="nav.transactions">Transacciones</span>
+          <span class="nav-caret">&#8250;</span>
+        </button>
+        <div class="nav-group-items" id="group-transactions">
+          <a class="nav-sub-item" href="#" data-section="transactions-deposits"><span data-i18n="nav.transactions.deposits">Depósitos</span></a>
+          <a class="nav-sub-item" href="#" data-section="transactions-withdrawals"><span data-i18n="nav.transactions.withdrawals">Retiros</span></a>
+          <a class="nav-sub-item" href="#" data-section="transactions-reversal"><span data-i18n="nav.transactions.reversal">Reverso de Transacción</span></a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <button class="nav-group-toggle" data-group="cashdesk">
+          <span class="nav-icon">&#128717;</span>
+          <span class="nav-label" data-i18n="nav.cashdesk">Control de Caja</span>
+          <span class="nav-caret">&#8250;</span>
+        </button>
+        <div class="nav-group-items" id="group-cashdesk">
+          <a class="nav-sub-item" href="#" data-section="cashdesk-opening"><span data-i18n="nav.cashdesk.opening">Apertura de Caja</span></a>
+          <a class="nav-sub-item" href="#" data-section="cashdesk-closing"><span data-i18n="nav.cashdesk.closing">Cierre de Caja</span></a>
+          <a class="nav-sub-item" href="#" data-section="cashdesk-reconciliation"><span data-i18n="nav.cashdesk.reconciliation">Arqueo y Conciliación</span></a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <button class="nav-group-toggle" data-group="special">
+          <span class="nav-icon">&#9733;</span>
+          <span class="nav-label" data-i18n="nav.special">Procesos Especiales</span>
+          <span class="nav-caret">&#8250;</span>
+        </button>
+        <div class="nav-group-items" id="group-special">
+          <a class="nav-sub-item" href="#" data-section="special-transfer"><span data-i18n="nav.special.transfer">Traslado de Recluso</span></a>
+          <a class="nav-sub-item" href="#" data-section="special-release"><span data-i18n="nav.special.release">Excarcelación</span></a>
+          <a class="nav-sub-item" href="#" data-section="special-family"><span data-i18n="nav.special.family">Entrega a Familiares</span></a>
+        </div>
+      </div>
+
+      <div class="nav-group">
+        <button class="nav-group-toggle" data-group="security">
+          <span class="nav-icon">&#128274;</span>
+          <span class="nav-label" data-i18n="nav.security">Seguridad y Auditoría</span>
+          <span class="nav-caret">&#8250;</span>
+        </button>
+        <div class="nav-group-items" id="group-security">
+          <a class="nav-sub-item" href="#" data-section="security-access-log"><span data-i18n="nav.security.accessLog">Registro de Accesos</span></a>
+          <a class="nav-sub-item" href="#" data-section="security-audit"><span data-i18n="nav.security.audit">Auditoría de Operaciones</span></a>
+          <a class="nav-sub-item" href="#" data-section="security-roles"><span data-i18n="nav.security.roles">Roles y Permisos</span></a>
+        </div>
+      </div>
+
+      <a class="nav-item" href="#" data-section="reports">
+        <span class="nav-icon">&#9783;</span>
+        <span class="nav-label" data-i18n="nav.reports">Reportes</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-footer">
+      <span>v1.0 &mdash; Demo</span>
+    </div>
+  </aside>
+
+  <!-- ═══ MAIN WRAPPER ═══ -->
+  <div class="main-wrapper">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <div class="breadcrumb">
+          <span data-i18n="topbar.system">DGP &mdash; Control de Efectivo</span>
+          <span class="breadcrumb-sep">&#8250;</span>
+          <span id="breadcrumbCurrent" data-i18n="nav.dashboard">Dashboard</span>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="lang-switcher">
+          <button class="lang-btn" data-lang="es">ES</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <div class="topbar-user">
+          <div class="user-avatar">JM</div>
+          <div class="user-info">
+            <span class="user-name">Juana Mart&#237;nez</span>
+            <span class="user-role" data-i18n="user.role">Administradora</span>
+          </div>
+        </div>
+        <div class="topbar-clock" id="topbarClock">--:--</div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="content-area">
+
+      <!-- ══════════════════ DASHBOARD ══════════════════ -->
+      <section class="page-section active" id="section-dashboard">
+        <div class="page-header">
+          <div>
+            <h1 data-i18n="dashboard.title">Panel de Control</h1>
+            <p class="page-subtitle" data-i18n="dashboard.subtitle">Resumen operativo del d&#237;a &mdash; Sistema de Control de Efectivo Penitenciario</p>
+          </div>
+          <div class="page-date" id="pageDate"></div>
+        </div>
+
+        <div class="kpi-grid">
+          <div class="kpi-card kpi-blue">
+            <div class="kpi-icon">&#128100;</div>
+            <div class="kpi-body">
+              <div class="kpi-value">3,847</div>
+              <div class="kpi-label" data-i18n="dashboard.kpi.inmates">Reclusos Registrados</div>
+            </div>
+            <div class="kpi-trend up">+12 <span data-i18n="dashboard.kpi.thisMonth">este mes</span></div>
+          </div>
+          <div class="kpi-card kpi-teal">
+            <div class="kpi-icon">&#128179;</div>
+            <div class="kpi-body">
+              <div class="kpi-value">3,612</div>
+              <div class="kpi-label" data-i18n="dashboard.kpi.activeAccounts">Cuentas Activas</div>
+            </div>
+            <div class="kpi-trend up">+8 <span data-i18n="dashboard.kpi.today">hoy</span></div>
+          </div>
+          <div class="kpi-card kpi-green">
+            <div class="kpi-icon">&#8679;</div>
+            <div class="kpi-body">
+              <div class="kpi-value">RD$ 245,800</div>
+              <div class="kpi-label" data-i18n="dashboard.kpi.todayDeposits">Dep&#243;sitos del D&#237;a</div>
+            </div>
+            <div class="kpi-trend up">+15% <span data-i18n="dashboard.kpi.vsYesterday">vs ayer</span></div>
+          </div>
+          <div class="kpi-card kpi-amber">
+            <div class="kpi-icon">&#8681;</div>
+            <div class="kpi-body">
+              <div class="kpi-value">RD$ 87,350</div>
+              <div class="kpi-label" data-i18n="dashboard.kpi.todayWithdrawals">Retiros del D&#237;a</div>
+            </div>
+            <div class="kpi-trend down">&minus;4% <span data-i18n="dashboard.kpi.vsYesterday">vs ayer</span></div>
+          </div>
+          <div class="kpi-card kpi-indigo">
+            <div class="kpi-icon">&#128451;</div>
+            <div class="kpi-body">
+              <div class="kpi-value">12</div>
+              <div class="kpi-label" data-i18n="dashboard.kpi.openCashDesks">Cajas Abiertas</div>
+            </div>
+            <div class="kpi-trend neutral"><span data-i18n="dashboard.kpi.of">de</span> 14 <span data-i18n="dashboard.kpi.centers">centros</span></div>
+          </div>
+          <div class="kpi-card kpi-red">
+            <div class="kpi-icon">&#9888;</div>
+            <div class="kpi-body">
+              <div class="kpi-value">3</div>
+              <div class="kpi-label" data-i18n="dashboard.kpi.auditAlerts">Alertas de Auditor&#237;a</div>
+            </div>
+            <div class="kpi-trend alert"><span data-i18n="dashboard.kpi.requireReview">Requieren revisi&#243;n</span></div>
+          </div>
+        </div>
+
+        <div class="dashboard-body">
+          <div class="dash-panel">
+            <div class="panel-header">
+              <h2 data-i18n="dashboard.recentTransactions">Transacciones Recientes</h2>
+              <span class="panel-badge" data-i18n="dashboard.last24h">&#218;ltimas 24h</span>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="table.ref">Ref.</th>
+                    <th data-i18n="table.inmate">Recluso</th>
+                    <th data-i18n="table.center">Centro</th>
+                    <th data-i18n="table.type">Tipo</th>
+                    <th data-i18n="table.amount">Monto</th>
+                    <th data-i18n="table.status">Estado</th>
+                    <th data-i18n="table.time">Hora</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mono">#TXN-20847</td><td>Carlos R. M&#233;ndez</td>
+                    <td data-i18n="center.laVictoria">La Victoria</td>
+                    <td><span class="badge badge-deposit" data-i18n="txn.deposit">Dep&#243;sito</span></td>
+                    <td class="amount-pos">RD$ 5,000</td>
+                    <td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td>
+                    <td class="mono">08:47</td>
+                  </tr>
+                  <tr>
+                    <td class="mono">#TXN-20846</td><td>Ana L. P&#233;rez</td>
+                    <td data-i18n="center.najayo">Najayo</td>
+                    <td><span class="badge badge-withdrawal" data-i18n="txn.withdrawal">Retiro</span></td>
+                    <td class="amount-neg">RD$ 1,200</td>
+                    <td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td>
+                    <td class="mono">08:31</td>
+                  </tr>
+                  <tr>
+                    <td class="mono">#TXN-20845</td><td>Jos&#233; M. Santos</td>
+                    <td data-i18n="center.rafeyH">Rafey Hombres</td>
+                    <td><span class="badge badge-deposit" data-i18n="txn.deposit">Dep&#243;sito</span></td>
+                    <td class="amount-pos">RD$ 8,500</td>
+                    <td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td>
+                    <td class="mono">08:15</td>
+                  </tr>
+                  <tr>
+                    <td class="mono">#TXN-20844</td><td>Mar&#237;a G. Cruz</td>
+                    <td data-i18n="center.laVictoria">La Victoria</td>
+                    <td><span class="badge badge-transfer" data-i18n="txn.transfer">Traslado</span></td>
+                    <td class="amount-neu">RD$ 3,750</td>
+                    <td><span class="dot yellow"></span><span data-i18n="status.pending">Pendiente</span></td>
+                    <td class="mono">07:58</td>
+                  </tr>
+                  <tr>
+                    <td class="mono">#TXN-20843</td><td>Pedro A. Guzm&#225;n</td>
+                    <td data-i18n="center.higuey">Hig&#252;ey</td>
+                    <td><span class="badge badge-withdrawal" data-i18n="txn.withdrawal">Retiro</span></td>
+                    <td class="amount-neg">RD$ 2,000</td>
+                    <td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td>
+                    <td class="mono">07:42</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="dash-side">
+            <div class="panel-small">
+              <div class="panel-header">
+                <h2 data-i18n="dashboard.cashDeskStatus">Estado de Cajas</h2>
+              </div>
+              <div class="cashdesk-list">
+                <div class="cashdesk-item"><span class="dot green"></span><span data-i18n="center.laVictoria">La Victoria</span><span class="cd-stat">Op. 234</span></div>
+                <div class="cashdesk-item"><span class="dot green"></span><span data-i18n="center.najayo">Najayo</span><span class="cd-stat">Op. 189</span></div>
+                <div class="cashdesk-item"><span class="dot green"></span><span data-i18n="center.rafeyH">Rafey Hombres</span><span class="cd-stat">Op. 156</span></div>
+                <div class="cashdesk-item"><span class="dot gray"></span><span>San Felipe</span><span class="cd-stat muted" data-i18n="status.closed">Cerrado</span></div>
+                <div class="cashdesk-item"><span class="dot green"></span><span data-i18n="center.higuey">Hig&#252;ey</span><span class="cd-stat">Op. 98</span></div>
+              </div>
+            </div>
+
+            <div class="panel-small panel-alerts">
+              <div class="panel-header">
+                <h2 data-i18n="dashboard.auditAlerts">Alertas de Auditor&#237;a</h2>
+                <span class="alert-count">3</span>
+              </div>
+              <div class="alert-list">
+                <div class="alert-item alert-med">
+                  <span class="ai-icon">&#9888;</span>
+                  <div class="ai-body">
+                    <strong data-i18n="alert.unusualAmount">Monto inusual</strong>
+                    <span>La Victoria &mdash; RD$ 45,000</span>
+                  </div>
+                </div>
+                <div class="alert-item alert-low">
+                  <span class="ai-icon">&#8505;</span>
+                  <div class="ai-body">
+                    <strong data-i18n="alert.failedLogin">Acceso fallido</strong>
+                    <span>user.operador03</span>
+                  </div>
+                </div>
+                <div class="alert-item alert-med">
+                  <span class="ai-icon">&#9888;</span>
+                  <div class="ai-body">
+                    <strong data-i18n="alert.reversalPending">Reverso pendiente</strong>
+                    <span>#TXN-20801</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ PRISON CENTERS ══════════════════ -->
+      <section class="page-section" id="section-admin-prison-centers">
+        <div class="page-header">
+          <h1 data-i18n="nav.admin.prisonCenters">Centros Penitenciarios</h1>
+          <button class="btn btn-primary" data-i18n="btn.addNew">+ Agregar</button>
+        </div>
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Buscar..." data-i18n-placeholder="search.placeholder">
+          <select class="filter-sel">
+            <option data-i18n="filter.allProvinces">Todas las provincias</option>
+            <option>Distrito Nacional</option><option>Santiago</option><option>San Pedro de Macor&#237;s</option>
+          </select>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th>ID</th><th data-i18n="table.name">Nombre</th><th data-i18n="table.province">Provincia</th>
+              <th data-i18n="table.capacity">Capacidad</th><th data-i18n="table.inmates">Reclusos</th>
+              <th data-i18n="table.status">Estado</th><th data-i18n="table.actions">Acciones</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="mono">CP-001</td><td><strong data-i18n="center.laVictoria">La Victoria</strong></td><td>Distrito Nacional</td><td>2,500</td><td>3,201</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+              <tr><td class="mono">CP-002</td><td><strong data-i18n="center.najayo">Najayo</strong></td><td>San Crist&#243;bal</td><td>1,800</td><td>1,640</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+              <tr><td class="mono">CP-003</td><td><strong data-i18n="center.rafeyH">Rafey Hombres</strong></td><td>Santiago</td><td>1,200</td><td>987</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+              <tr><td class="mono">CP-004</td><td><strong>San Felipe</strong></td><td>Puerto Plata</td><td>600</td><td>412</td><td><span class="dot yellow"></span><span data-i18n="status.maintenance">Mantenimiento</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+              <tr><td class="mono">CP-005</td><td><strong data-i18n="center.higuey">Hig&#252;ey</strong></td><td>La Altagracia</td><td>800</td><td>623</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ PROVINCES ══════════════════ -->
+      <section class="page-section" id="section-admin-provinces">
+        <div class="page-header">
+          <h1 data-i18n="nav.admin.provinces">Provincias</h1>
+          <button class="btn btn-primary" data-i18n="btn.addNew">+ Agregar</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th>ID</th><th data-i18n="table.name">Nombre</th><th data-i18n="table.region">Regi&#243;n</th>
+              <th data-i18n="table.centers">Centros</th><th data-i18n="table.status">Estado</th><th data-i18n="table.actions">Acciones</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="mono">PR-001</td><td>Distrito Nacional</td><td>Ozama</td><td>3</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">PR-002</td><td>Santiago</td><td>Cibao Norte</td><td>2</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">PR-003</td><td>San Crist&#243;bal</td><td>Valdesia</td><td>1</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">PR-004</td><td>La Altagracia</td><td>Yuma</td><td>1</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">PR-005</td><td>Puerto Plata</td><td>Cibao Norte</td><td>1</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ ACCOUNT TYPES ══════════════════ -->
+      <section class="page-section" id="section-admin-account-types">
+        <div class="page-header">
+          <h1 data-i18n="nav.admin.accountTypes">Tipos de Cuenta</h1>
+          <button class="btn btn-primary" data-i18n="btn.addNew">+ Agregar</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th>ID</th><th data-i18n="table.name">Nombre</th><th data-i18n="table.description">Descripci&#243;n</th>
+              <th data-i18n="table.monthlyLimit">L&#237;mite Mensual</th><th data-i18n="table.status">Estado</th><th data-i18n="table.actions">Acciones</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="mono">AT-001</td><td data-i18n="acct.standard">Est&#225;ndar</td><td data-i18n="acct.standard.desc">Cuenta b&#225;sica para reclusos procesados</td><td>RD$ 10,000</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">AT-002</td><td data-i18n="acct.trusted">Confianza</td><td data-i18n="acct.trusted.desc">Reclusos con conducta ejemplar</td><td>RD$ 25,000</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">AT-003</td><td data-i18n="acct.restricted">Restringida</td><td data-i18n="acct.restricted.desc">Reclusos en r&#233;gimen disciplinario</td><td>RD$ 2,000</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">AT-004</td><td data-i18n="acct.transit">Tr&#225;nsito</td><td data-i18n="acct.transit.desc">Reclusos en traslado temporal</td><td>RD$ 5,000</td><td><span class="dot gray"></span><span data-i18n="status.inactive">Inactivo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ USERS & ROLES ══════════════════ -->
+      <section class="page-section" id="section-admin-users">
+        <div class="page-header">
+          <h1 data-i18n="nav.admin.users">Usuarios y Roles</h1>
+          <button class="btn btn-primary" data-i18n="btn.addUser">+ Agregar Usuario</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th data-i18n="table.user">Usuario</th><th data-i18n="table.fullName">Nombre</th>
+              <th data-i18n="table.role">Rol</th><th data-i18n="table.center">Centro</th>
+              <th data-i18n="table.lastAccess">&#218;ltimo Acceso</th><th data-i18n="table.status">Estado</th><th data-i18n="table.actions">Acciones</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="mono">jmartinez</td><td>Juana Mart&#237;nez</td><td><span class="role-badge r-admin" data-i18n="role.admin">Administrador</span></td><td data-i18n="center.laVictoria">La Victoria</td><td class="mono">27/03/2026 08:30</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">operador01</td><td>Luis F. D&#237;az</td><td><span class="role-badge r-op" data-i18n="role.operator">Operador</span></td><td data-i18n="center.najayo">Najayo</td><td class="mono">27/03/2026 07:45</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">auditor01</td><td>Rosa M. Cabral</td><td><span class="role-badge r-aud" data-i18n="role.auditor">Auditor</span></td><td data-i18n="scope.national">Nacional</td><td class="mono">26/03/2026 16:12</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+              <tr><td class="mono">operador03</td><td>Marco A. Reyes</td><td><span class="role-badge r-op" data-i18n="role.operator">Operador</span></td><td data-i18n="center.rafeyH">Rafey Hombres</td><td class="mono">26/03/2026 15:03</td><td><span class="dot red"></span><span data-i18n="status.suspended">Suspendido</span></td><td class="actions"><button class="btn-sm" data-i18n="btn.edit">Editar</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ INMATE REGISTRATION ══════════════════ -->
+      <section class="page-section" id="section-inmates-registration">
+        <div class="page-header">
+          <h1 data-i18n="nav.inmates.registration">Registro de Reclusos</h1>
+          <button class="btn btn-primary" data-i18n="btn.register">+ Registrar</button>
+        </div>
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="C&#233;dula, nombre o c&#243;digo..." data-i18n-placeholder="search.inmate">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th data-i18n="table.code">C&#243;digo</th><th data-i18n="table.fullName">Nombre</th>
+              <th data-i18n="table.id">C&#233;dula</th><th data-i18n="table.center">Centro</th>
+              <th data-i18n="table.cell">Celda</th><th data-i18n="table.entryDate">Ingreso</th>
+              <th data-i18n="table.status">Estado</th><th data-i18n="table.actions">Acciones</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="mono">REC-00234</td><td>Carlos R. M&#233;ndez</td><td class="mono">001-1234567-8</td><td data-i18n="center.laVictoria">La Victoria</td><td>B-14</td><td class="mono">12/01/2024</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+              <tr><td class="mono">REC-00891</td><td>Ana L. P&#233;rez</td><td class="mono">002-8765432-1</td><td data-i18n="center.najayo">Najayo</td><td>F-02</td><td class="mono">05/06/2023</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+              <tr><td class="mono">REC-01147</td><td>Jos&#233; M. Santos</td><td class="mono">001-9988776-5</td><td data-i18n="center.rafeyH">Rafey Hombres</td><td>C-07</td><td class="mono">19/09/2022</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+              <tr><td class="mono">REC-00312</td><td>Pedro A. Guzm&#225;n</td><td class="mono">003-5544332-9</td><td data-i18n="center.higuey">Hig&#252;ey</td><td>A-19</td><td class="mono">28/02/2024</td><td><span class="dot green"></span><span data-i18n="status.active">Activo</span></td><td class="actions"><button class="btn-sm sec" data-i18n="btn.view">Ver</button></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ ACCOUNT OPENING ══════════════════ -->
+      <section class="page-section" id="section-inmates-accounts">
+        <div class="page-header">
+          <h1 data-i18n="nav.inmates.accounts">Apertura de Cuentas</h1>
+        </div>
+        <div class="form-card">
+          <h2 class="form-title" data-i18n="form.accountOpening">Nueva Apertura de Cuenta</h2>
+          <div class="form-grid">
+            <div class="fg"><label data-i18n="form.inmateCode">C&#243;digo de Recluso</label><input type="text" class="fc" value="REC-00234"></div>
+            <div class="fg"><label data-i18n="form.fullName">Nombre Completo</label><input type="text" class="fc" value="Carlos R. M&#233;ndez" readonly></div>
+            <div class="fg"><label data-i18n="form.accountType">Tipo de Cuenta</label>
+              <select class="fc">
+                <option data-i18n="acct.standard">Est&#225;ndar</option>
+                <option data-i18n="acct.trusted">Confianza</option>
+                <option data-i18n="acct.restricted">Restringida</option>
+              </select>
+            </div>
+            <div class="fg"><label data-i18n="form.center">Centro</label><input type="text" class="fc" value="La Victoria" readonly></div>
+            <div class="fg"><label data-i18n="form.initialBalance">Saldo Inicial (RD$)</label><input type="number" class="fc" value="0"></div>
+            <div class="fg"><label data-i18n="form.openDate">Fecha de Apertura</label><input type="date" class="fc" value="2026-03-27"></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+            <button class="btn btn-primary" data-i18n="btn.openAccount">Abrir Cuenta</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ BALANCE INQUIRY ══════════════════ -->
+      <section class="page-section" id="section-inmates-balance">
+        <div class="page-header">
+          <h1 data-i18n="nav.inmates.balance">Consulta de Saldo</h1>
+        </div>
+        <div class="search-inline-wrap">
+          <input type="text" class="fc" value="REC-00234" placeholder="REC-XXXXX">
+          <button class="btn btn-primary" data-i18n="btn.search">Buscar</button>
+        </div>
+        <div class="balance-card">
+          <div class="balance-header">
+            <div class="bal-inmate">
+              <div class="inmate-avatar">CM</div>
+              <div>
+                <h2>Carlos R. M&#233;ndez</h2>
+                <span class="mono muted">REC-00234 &nbsp;&bull;&nbsp; La Victoria &mdash; Celda B-14</span>
+              </div>
+            </div>
+            <div class="bal-amount">
+              <span class="bal-label" data-i18n="balance.available">Saldo Disponible</span>
+              <span class="bal-value">RD$ 12,350.00</span>
+            </div>
+          </div>
+          <div class="balance-details">
+            <div class="bd-item"><span data-i18n="balance.accountType">Tipo de Cuenta</span><strong data-i18n="acct.standard">Est&#225;ndar</strong></div>
+            <div class="bd-item"><span data-i18n="balance.monthlyLimit">L&#237;mite Mensual</span><strong>RD$ 10,000</strong></div>
+            <div class="bd-item"><span data-i18n="balance.monthlyUsed">Usado este mes</span><strong>RD$ 4,200</strong></div>
+            <div class="bd-item"><span data-i18n="balance.status">Estado de Cuenta</span><strong><span class="dot green"></span><span data-i18n="status.active">Activo</span></strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ TRANSACTION HISTORY ══════════════════ -->
+      <section class="page-section" id="section-inmates-history">
+        <div class="page-header">
+          <h1 data-i18n="nav.inmates.history">Historial de Transacciones</h1>
+        </div>
+        <div class="search-bar">
+          <input type="text" class="search-input" value="REC-00234">
+          <input type="date" class="filter-sel" value="2026-01-01">
+          <input type="date" class="filter-sel" value="2026-03-27">
+          <button class="btn btn-primary" data-i18n="btn.search">Buscar</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th data-i18n="table.ref">Ref.</th><th data-i18n="table.date">Fecha</th>
+              <th data-i18n="table.type">Tipo</th><th data-i18n="table.amount">Monto</th>
+              <th data-i18n="table.balance">Saldo</th><th data-i18n="table.operator">Operador</th><th data-i18n="table.status">Estado</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="mono">#TXN-20847</td><td class="mono">27/03/2026 08:47</td><td><span class="badge badge-deposit" data-i18n="txn.deposit">Dep&#243;sito</span></td><td class="amount-pos">+RD$ 5,000</td><td class="mono">RD$ 12,350</td><td class="mono">operador01</td><td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td></tr>
+              <tr><td class="mono">#TXN-20732</td><td class="mono">20/03/2026 11:20</td><td><span class="badge badge-withdrawal" data-i18n="txn.withdrawal">Retiro</span></td><td class="amount-neg">&minus;RD$ 1,500</td><td class="mono">RD$ 7,350</td><td class="mono">operador01</td><td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td></tr>
+              <tr><td class="mono">#TXN-20601</td><td class="mono">10/03/2026 09:05</td><td><span class="badge badge-deposit" data-i18n="txn.deposit">Dep&#243;sito</span></td><td class="amount-pos">+RD$ 8,850</td><td class="mono">RD$ 8,850</td><td class="mono">jmartinez</td><td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ DEPOSITS ══════════════════ -->
+      <section class="page-section" id="section-transactions-deposits">
+        <div class="page-header"><h1 data-i18n="nav.transactions.deposits">Dep&#243;sitos</h1></div>
+        <div class="form-card">
+          <h2 class="form-title" data-i18n="form.deposit">Registrar Dep&#243;sito</h2>
+          <div class="form-grid">
+            <div class="fg"><label data-i18n="form.inmateCode">C&#243;digo de Recluso</label><input type="text" class="fc" placeholder="REC-XXXXX"></div>
+            <div class="fg"><label data-i18n="form.depositor">Depositante</label><input type="text" class="fc" placeholder="Nombre del familiar o remitente"></div>
+            <div class="fg"><label data-i18n="form.amount">Monto (RD$)</label><input type="number" class="fc" placeholder="0.00"></div>
+            <div class="fg"><label data-i18n="form.reference">Referencia</label><input type="text" class="fc" placeholder="Cheque / transferencia / efectivo"></div>
+            <div class="fg"><label data-i18n="form.notes">Notas</label><input type="text" class="fc" placeholder="Observaciones opcionales"></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+            <button class="btn btn-primary" data-i18n="btn.confirmDeposit">Confirmar Dep&#243;sito</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ WITHDRAWALS ══════════════════ -->
+      <section class="page-section" id="section-transactions-withdrawals">
+        <div class="page-header"><h1 data-i18n="nav.transactions.withdrawals">Retiros</h1></div>
+        <div class="form-card">
+          <h2 class="form-title" data-i18n="form.withdrawal">Registrar Retiro</h2>
+          <div class="form-grid">
+            <div class="fg"><label data-i18n="form.inmateCode">C&#243;digo de Recluso</label><input type="text" class="fc" placeholder="REC-XXXXX"></div>
+            <div class="fg"><label data-i18n="form.amount">Monto (RD$)</label><input type="number" class="fc" placeholder="0.00"></div>
+            <div class="fg"><label data-i18n="form.reason">Motivo</label>
+              <select class="fc">
+                <option data-i18n="reason.personal">Gastos personales</option>
+                <option data-i18n="reason.medical">Atenci&#243;n m&#233;dica</option>
+                <option data-i18n="reason.legal">Gastos legales</option>
+              </select>
+            </div>
+            <div class="fg"><label data-i18n="form.authorizedBy">Autorizado por</label><input type="text" class="fc" value="jmartinez" readonly></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+            <button class="btn btn-primary" data-i18n="btn.confirmWithdrawal">Confirmar Retiro</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ REVERSAL ══════════════════ -->
+      <section class="page-section" id="section-transactions-reversal">
+        <div class="page-header"><h1 data-i18n="nav.transactions.reversal">Reverso de Transacci&#243;n</h1></div>
+        <div class="form-card">
+          <div class="alert-banner warn">
+            <span>&#9888;</span>
+            <span data-i18n="alert.reversalWarning">El reverso requiere autorizaci&#243;n de supervisor y queda registrado en el log de auditor&#237;a.</span>
+          </div>
+          <div class="form-grid">
+            <div class="fg"><label data-i18n="form.transactionRef">Referencia de Transacci&#243;n</label><input type="text" class="fc" placeholder="#TXN-XXXXX"></div>
+            <div class="fg"><label data-i18n="form.reason">Motivo del Reverso</label><input type="text" class="fc" placeholder="Descripci&#243;n del motivo"></div>
+            <div class="fg"><label data-i18n="form.supervisorAuth">C&#243;digo de Autorizaci&#243;n</label><input type="password" class="fc" placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+            <button class="btn btn-danger" data-i18n="btn.processReversal">Procesar Reverso</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ CASHDESK OPENING ══════════════════ -->
+      <section class="page-section" id="section-cashdesk-opening">
+        <div class="page-header"><h1 data-i18n="nav.cashdesk.opening">Apertura de Caja</h1></div>
+        <div class="form-card">
+          <h2 class="form-title" data-i18n="form.cashOpenTitle">Apertura de Sesi&#243;n de Caja</h2>
+          <div class="form-grid">
+            <div class="fg"><label data-i18n="form.center">Centro Penitenciario</label>
+              <select class="fc">
+                <option data-i18n="center.laVictoria">La Victoria</option>
+                <option data-i18n="center.najayo">Najayo</option>
+                <option data-i18n="center.rafeyH">Rafey Hombres</option>
+              </select>
+            </div>
+            <div class="fg"><label data-i18n="form.operator">Operador</label><input type="text" class="fc" value="jmartinez" readonly></div>
+            <div class="fg"><label data-i18n="form.openingBalance">Fondo Inicial (RD$)</label><input type="number" class="fc" placeholder="0.00"></div>
+            <div class="fg"><label data-i18n="form.openDatetime">Fecha/Hora Apertura</label><input type="datetime-local" class="fc" value="2026-03-27T08:00"></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" data-i18n="btn.openCashDesk">Abrir Caja</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ CASHDESK CLOSING ══════════════════ -->
+      <section class="page-section" id="section-cashdesk-closing">
+        <div class="page-header"><h1 data-i18n="nav.cashdesk.closing">Cierre de Caja</h1></div>
+        <div class="form-card">
+          <h2 class="form-title" data-i18n="form.cashCloseTitle">Cierre de Sesi&#243;n de Caja</h2>
+          <div class="cashdesk-summary">
+            <div class="sum-row"><span data-i18n="summary.openingBalance">Fondo Inicial</span><strong>RD$ 15,000.00</strong></div>
+            <div class="sum-row"><span data-i18n="summary.totalDeposits">Total Dep&#243;sitos</span><strong class="amount-pos">+RD$ 38,500.00</strong></div>
+            <div class="sum-row"><span data-i18n="summary.totalWithdrawals">Total Retiros</span><strong class="amount-neg">&minus;RD$ 12,200.00</strong></div>
+            <div class="sum-row sum-total"><span data-i18n="summary.expectedBalance">Saldo Esperado</span><strong>RD$ 41,300.00</strong></div>
+          </div>
+          <div class="form-grid" style="margin-top:1.5rem">
+            <div class="fg"><label data-i18n="form.physicalCount">Conteo F&#237;sico (RD$)</label><input type="number" class="fc" placeholder="0.00"></div>
+            <div class="fg"><label data-i18n="form.notes">Observaciones</label><input type="text" class="fc" placeholder="Sin novedad..."></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+            <button class="btn btn-primary" data-i18n="btn.closeCashDesk">Cerrar Caja</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ RECONCILIATION ══════════════════ -->
+      <section class="page-section" id="section-cashdesk-reconciliation">
+        <div class="page-header"><h1 data-i18n="nav.cashdesk.reconciliation">Arqueo y Conciliaci&#243;n</h1></div>
+        <div class="search-bar">
+          <select class="filter-sel"><option data-i18n="center.laVictoria">La Victoria</option><option data-i18n="center.najayo">Najayo</option></select>
+          <input type="date" class="filter-sel" value="2026-03-27">
+          <button class="btn btn-primary" data-i18n="btn.generate">Generar Arqueo</button>
+        </div>
+        <div class="recon-grid">
+          <div class="recon-card"><h3 data-i18n="recon.expected">Saldo Esperado</h3><strong>RD$ 41,300.00</strong></div>
+          <div class="recon-card"><h3 data-i18n="recon.physical">Conteo F&#237;sico</h3><strong>RD$ 41,300.00</strong></div>
+          <div class="recon-card"><h3 data-i18n="recon.difference">Diferencia</h3><strong class="amount-pos">RD$ 0.00</strong></div>
+          <div class="recon-card recon-ok"><h3 data-i18n="recon.result">Resultado</h3><strong data-i18n="recon.balanced">&#10003; Cuadrado</strong></div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ INMATE TRANSFER ══════════════════ -->
+      <section class="page-section" id="section-special-transfer">
+        <div class="page-header"><h1 data-i18n="nav.special.transfer">Traslado de Recluso</h1></div>
+        <div class="form-card">
+          <div class="alert-banner info">
+            <span>&#8505;</span>
+            <span data-i18n="alert.transferInfo">El traslado transfiere el saldo al centro destino. La cuenta en el centro de origen se cierra autom&#225;ticamente.</span>
+          </div>
+          <div class="form-grid">
+            <div class="fg"><label data-i18n="form.inmateCode">C&#243;digo de Recluso</label><input type="text" class="fc" placeholder="REC-XXXXX"></div>
+            <div class="fg"><label data-i18n="form.originCenter">Centro de Origen</label><input type="text" class="fc" value="La Victoria" readonly></div>
+            <div class="fg"><label data-i18n="form.destinationCenter">Centro de Destino</label>
+              <select class="fc">
+                <option data-i18n="center.najayo">Najayo</option>
+                <option data-i18n="center.rafeyH">Rafey Hombres</option>
+                <option data-i18n="center.higuey">Hig&#252;ey</option>
+              </select>
+            </div>
+            <div class="fg"><label data-i18n="form.transferDate">Fecha de Traslado</label><input type="date" class="fc" value="2026-03-27"></div>
+            <div class="fg"><label data-i18n="form.courtOrder">N&#176; de Orden Judicial</label><input type="text" class="fc" placeholder="OJ-2026-XXXX"></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+            <button class="btn btn-primary" data-i18n="btn.processTransfer">Procesar Traslado</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ RELEASE ══════════════════ -->
+      <section class="page-section" id="section-special-release">
+        <div class="page-header"><h1 data-i18n="nav.special.release">Excarcelaci&#243;n</h1></div>
+        <div class="form-card">
+          <div class="alert-banner warn">
+            <span>&#9888;</span>
+            <span data-i18n="alert.releaseWarning">Al excarcelar, el saldo total debe ser entregado. Esta operaci&#243;n es irreversible.</span>
+          </div>
+          <div class="form-grid">
+            <div class="fg"><label data-i18n="form.inmateCode">C&#243;digo de Recluso</label><input type="text" class="fc" placeholder="REC-XXXXX"></div>
+            <div class="fg"><label data-i18n="form.releaseDate">Fecha de Excarcelaci&#243;n</label><input type="date" class="fc" value="2026-03-27"></div>
+            <div class="fg"><label data-i18n="form.courtOrder">N&#176; de Sentencia</label><input type="text" class="fc" placeholder="SEN-2026-XXXX"></div>
+            <div class="fg"><label data-i18n="form.deliveredTo">Entregado a</label><input type="text" class="fc" placeholder="Nombre del receptor"></div>
+            <div class="fg"><label data-i18n="form.deliveredId">C&#233;dula del Receptor</label><input type="text" class="fc" placeholder="XXX-XXXXXXX-X"></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+            <button class="btn btn-danger" data-i18n="btn.processRelease">Procesar Excarcelaci&#243;n</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ FAMILY DELIVERY ══════════════════ -->
+      <section class="page-section" id="section-special-family">
+        <div class="page-header"><h1 data-i18n="nav.special.family">Entrega de Dinero a Familiares</h1></div>
+        <div class="form-card">
+          <div class="form-grid">
+            <div class="fg"><label data-i18n="form.inmateCode">C&#243;digo de Recluso</label><input type="text" class="fc" placeholder="REC-XXXXX"></div>
+            <div class="fg"><label data-i18n="form.amount">Monto a Entregar (RD$)</label><input type="number" class="fc" placeholder="0.00"></div>
+            <div class="fg"><label data-i18n="form.recipientName">Nombre del Familiar</label><input type="text" class="fc" placeholder="Nombre completo"></div>
+            <div class="fg"><label data-i18n="form.recipientId">C&#233;dula del Familiar</label><input type="text" class="fc" placeholder="XXX-XXXXXXX-X"></div>
+            <div class="fg"><label data-i18n="form.relationship">Parentesco</label>
+              <select class="fc">
+                <option data-i18n="rel.spouse">C&#243;nyuge</option>
+                <option data-i18n="rel.parent">Padre/Madre</option>
+                <option data-i18n="rel.child">Hijo/Hija</option>
+                <option data-i18n="rel.sibling">Hermano/Hermana</option>
+                <option data-i18n="rel.other">Otro</option>
+              </select>
+            </div>
+            <div class="fg"><label data-i18n="form.deliveryDate">Fecha de Entrega</label><input type="date" class="fc" value="2026-03-27"></div>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+            <button class="btn btn-primary" data-i18n="btn.processDelivery">Procesar Entrega</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ ACCESS LOG ══════════════════ -->
+      <section class="page-section" id="section-security-access-log">
+        <div class="page-header"><h1 data-i18n="nav.security.accessLog">Registro de Accesos</h1></div>
+        <div class="search-bar">
+          <input type="text" class="search-input" placeholder="Filtrar por usuario..." data-i18n-placeholder="search.user">
+          <input type="date" class="filter-sel" value="2026-03-27">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th data-i18n="table.user">Usuario</th><th data-i18n="table.datetime">Fecha/Hora</th>
+              <th data-i18n="table.ip">IP</th><th data-i18n="table.action">Acci&#243;n</th><th data-i18n="table.result">Resultado</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="mono">jmartinez</td><td class="mono">27/03/2026 08:30:12</td><td class="mono">192.168.1.45</td><td data-i18n="access.login">Inicio de sesi&#243;n</td><td><span class="dot green"></span><span data-i18n="status.success">Exitoso</span></td></tr>
+              <tr><td class="mono">operador01</td><td class="mono">27/03/2026 07:45:33</td><td class="mono">192.168.1.62</td><td data-i18n="access.login">Inicio de sesi&#243;n</td><td><span class="dot green"></span><span data-i18n="status.success">Exitoso</span></td></tr>
+              <tr><td class="mono">operador03</td><td class="mono">26/03/2026 18:22:07</td><td class="mono">192.168.2.11</td><td data-i18n="access.login">Inicio de sesi&#243;n</td><td><span class="dot red"></span><span data-i18n="status.failed">Fallido</span></td></tr>
+              <tr><td class="mono">operador03</td><td class="mono">26/03/2026 18:22:44</td><td class="mono">192.168.2.11</td><td data-i18n="access.login">Inicio de sesi&#243;n</td><td><span class="dot red"></span><span data-i18n="status.failed">Fallido</span></td></tr>
+              <tr><td class="mono">auditor01</td><td class="mono">26/03/2026 16:12:09</td><td class="mono">192.168.1.80</td><td data-i18n="access.login">Inicio de sesi&#243;n</td><td><span class="dot green"></span><span data-i18n="status.success">Exitoso</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ AUDIT ══════════════════ -->
+      <section class="page-section" id="section-security-audit">
+        <div class="page-header"><h1 data-i18n="nav.security.audit">Auditor&#237;a de Operaciones</h1></div>
+        <div class="search-bar">
+          <select class="filter-sel">
+            <option data-i18n="filter.allOperations">Todas las operaciones</option>
+            <option data-i18n="txn.deposit">Dep&#243;sito</option>
+            <option data-i18n="txn.withdrawal">Retiro</option>
+            <option data-i18n="txn.reversal">Reverso</option>
+          </select>
+          <input type="date" class="filter-sel" value="2026-03-27">
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr>
+              <th data-i18n="table.ref">Ref.</th><th data-i18n="table.datetime">Fecha/Hora</th>
+              <th data-i18n="table.operator">Operador</th><th data-i18n="table.operation">Operaci&#243;n</th>
+              <th data-i18n="table.inmate">Recluso</th><th data-i18n="table.amount">Monto</th><th data-i18n="table.status">Estado</th>
+            </tr></thead>
+            <tbody>
+              <tr><td class="mono">#AUD-5041</td><td class="mono">27/03/2026 08:47</td><td class="mono">operador01</td><td><span class="badge badge-deposit" data-i18n="txn.deposit">Dep&#243;sito</span></td><td>Carlos R. M&#233;ndez</td><td>RD$ 5,000</td><td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td></tr>
+              <tr><td class="mono">#AUD-5040</td><td class="mono">27/03/2026 08:31</td><td class="mono">operador01</td><td><span class="badge badge-withdrawal" data-i18n="txn.withdrawal">Retiro</span></td><td>Ana L. P&#233;rez</td><td>RD$ 1,200</td><td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td></tr>
+              <tr><td class="mono">#AUD-5039</td><td class="mono">26/03/2026 17:40</td><td class="mono">operador03</td><td><span class="badge badge-deposit" data-i18n="txn.deposit">Dep&#243;sito</span></td><td>Jos&#233; M. Santos</td><td>RD$ 45,000</td><td><span class="dot yellow"></span><span data-i18n="status.flagged">Marcado</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ ROLES & PERMISSIONS ══════════════════ -->
+      <section class="page-section" id="section-security-roles">
+        <div class="page-header">
+          <h1 data-i18n="nav.security.roles">Roles y Permisos</h1>
+          <button class="btn btn-primary" data-i18n="btn.addRole">+ Nuevo Rol</button>
+        </div>
+        <div class="roles-grid">
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-badge r-admin" data-i18n="role.admin">Administrador</span></div>
+            <ul class="perm-list">
+              <li class="p-yes">&#10003; <span data-i18n="perm.allModules">Todos los m&#243;dulos</span></li>
+              <li class="p-yes">&#10003; <span data-i18n="perm.userMgmt">Gesti&#243;n de usuarios</span></li>
+              <li class="p-yes">&#10003; <span data-i18n="perm.auditView">Vista de auditor&#237;a</span></li>
+              <li class="p-yes">&#10003; <span data-i18n="perm.reversal">Autorizar reversos</span></li>
+              <li class="p-yes">&#10003; <span data-i18n="perm.reports">Reportes</span></li>
+            </ul>
+          </div>
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-badge r-op" data-i18n="role.operator">Operador</span></div>
+            <ul class="perm-list">
+              <li class="p-yes">&#10003; <span data-i18n="perm.deposits">Dep&#243;sitos</span></li>
+              <li class="p-yes">&#10003; <span data-i18n="perm.withdrawals">Retiros</span></li>
+              <li class="p-yes">&#10003; <span data-i18n="perm.balanceQuery">Consulta de saldo</span></li>
+              <li class="p-no">&#10007; <span data-i18n="perm.userMgmt">Gesti&#243;n de usuarios</span></li>
+              <li class="p-no">&#10007; <span data-i18n="perm.reversal">Autorizar reversos</span></li>
+            </ul>
+          </div>
+          <div class="role-card">
+            <div class="role-card-header"><span class="role-badge r-aud" data-i18n="role.auditor">Auditor</span></div>
+            <ul class="perm-list">
+              <li class="p-yes">&#10003; <span data-i18n="perm.auditView">Vista de auditor&#237;a</span></li>
+              <li class="p-yes">&#10003; <span data-i18n="perm.reports">Reportes</span></li>
+              <li class="p-yes">&#10003; <span data-i18n="perm.accessLog">Registro de accesos</span></li>
+              <li class="p-no">&#10007; <span data-i18n="perm.deposits">Dep&#243;sitos</span></li>
+              <li class="p-no">&#10007; <span data-i18n="perm.withdrawals">Retiros</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══════════════════ REPORTS ══════════════════ -->
+      <section class="page-section" id="section-reports">
+        <div class="page-header"><h1 data-i18n="nav.reports">Reportes</h1></div>
+        <div class="reports-grid">
+          <div class="report-card">
+            <div class="rpt-icon">&#128203;</div>
+            <h3 data-i18n="report.dailyMovements">Movimientos Diarios</h3>
+            <p data-i18n="report.dailyMovements.desc">Resumen de transacciones por d&#237;a y centro</p>
+            <button class="btn btn-secondary" data-i18n="btn.generate">Generar</button>
+          </div>
+          <div class="report-card">
+            <div class="rpt-icon">&#128202;</div>
+            <h3 data-i18n="report.balanceReport">Reporte de Saldos</h3>
+            <p data-i18n="report.balanceReport.desc">Saldos actuales por centro y tipo de cuenta</p>
+            <button class="btn btn-secondary" data-i18n="btn.generate">Generar</button>
+          </div>
+          <div class="report-card">
+            <div class="rpt-icon">&#128451;</div>
+            <h3 data-i18n="report.cashDeskReport">Resumen de Cajas</h3>
+            <p data-i18n="report.cashDeskReport.desc">Aperturas, cierres y arqueos por per&#237;odo</p>
+            <button class="btn btn-secondary" data-i18n="btn.generate">Generar</button>
+          </div>
+          <div class="report-card">
+            <div class="rpt-icon">&#128274;</div>
+            <h3 data-i18n="report.auditReport">Reporte de Auditor&#237;a</h3>
+            <p data-i18n="report.auditReport.desc">Operaciones marcadas y accesos sospechosos</p>
+            <button class="btn btn-secondary" data-i18n="btn.generate">Generar</button>
+          </div>
+          <div class="report-card">
+            <div class="rpt-icon">&#128100;</div>
+            <h3 data-i18n="report.inmateReport">Reclusos y Cuentas</h3>
+            <p data-i18n="report.inmateReport.desc">Listado de reclusos con estado de cuenta</p>
+            <button class="btn btn-secondary" data-i18n="btn.generate">Generar</button>
+          </div>
+          <div class="report-card">
+            <div class="rpt-icon">&#9733;</div>
+            <h3 data-i18n="report.specialProcesses">Procesos Especiales</h3>
+            <p data-i18n="report.specialProcesses.desc">Traslados, excarcelaciones y entregas a familiares</p>
+            <button class="btn btn-secondary" data-i18n="btn.generate">Generar</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
