@@ -524,6 +524,10 @@
         </div>
         <div class="form-card">
           <h2 class="form-title" data-i18n="form.accountOpening">Nueva Apertura de Cuenta</h2>
+          <div class="form-hint">
+            <span class="form-hint-icon">&#8505;</span>
+            <span data-i18n="hint.accountOpening">El c&#243;digo del recluso debe estar registrado previamente. El saldo inicial puede ser cero; los dep&#243;sitos se realizan desde el m&#243;dulo de Transacciones.</span>
+          </div>
           <div class="form-grid">
             <div class="fg"><label data-i18n="form.inmateCode">C&#243;digo de Recluso</label><input type="text" class="fc" value="REC-00234"></div>
             <div class="fg"><label data-i18n="form.fullName">Nombre Completo</label><input type="text" class="fc" value="Carlos R. M&#233;ndez" readonly></div>
@@ -541,6 +545,24 @@
           <div class="form-actions">
             <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
             <button class="btn btn-primary" data-i18n="btn.openAccount">Abrir Cuenta</button>
+          </div>
+        </div>
+        <!-- Account type reference box -->
+        <div class="form-card" style="margin-top:20px;max-width:900px">
+          <h2 class="form-title" data-i18n="acct.typesTitle">Referencia de Tipos de Cuenta</h2>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px">
+            <div class="state-card state-info" style="margin-bottom:0;flex-direction:column;align-items:flex-start;gap:6px">
+              <strong data-i18n="acct.standard">Est&#225;ndar</strong>
+              <span style="font-size:12px" data-i18n="acct.standard.desc">L&#237;mite mensual RD$ 10,000. Uso general.</span>
+            </div>
+            <div class="state-card state-success" style="margin-bottom:0;flex-direction:column;align-items:flex-start;gap:6px">
+              <strong data-i18n="acct.trusted">Confianza</strong>
+              <span style="font-size:12px" data-i18n="acct.trusted.desc">L&#237;mite ampliado RD$ 25,000. Aprobado por direcci&#243;n.</span>
+            </div>
+            <div class="state-card state-warning" style="margin-bottom:0;flex-direction:column;align-items:flex-start;gap:6px">
+              <strong data-i18n="acct.restricted">Restringida</strong>
+              <span style="font-size:12px" data-i18n="acct.restricted.desc">L&#237;mite RD$ 2,000. Supervisada por seguridad.</span>
+            </div>
           </div>
         </div>
       </section>
@@ -699,6 +721,27 @@
           <div class="form-actions">
             <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
             <button class="btn btn-danger" data-i18n="btn.processReversal">Procesar Reverso</button>
+          </div>
+        </div>
+        <!-- Reversal info panel -->
+        <div class="form-card" style="margin-top:20px;max-width:900px">
+          <h2 class="form-title" data-i18n="reversal.lastReversals">&#218;ltimos Reversos Procesados</h2>
+          <div class="table-wrap" style="box-shadow:none;border:none">
+            <table class="data-table">
+              <thead><tr>
+                <th data-i18n="table.ref">Ref.</th>
+                <th data-i18n="table.datetime">Fecha/Hora</th>
+                <th data-i18n="table.inmate">Recluso</th>
+                <th data-i18n="table.amount">Monto</th>
+                <th data-i18n="table.operator">Autorizado por</th>
+                <th data-i18n="table.status">Estado</th>
+              </tr></thead>
+              <tbody>
+                <tr><td class="mono">#REV-0041</td><td class="mono" data-date="2026-03-25T14:30">25/03/2026 14:30</td><td>Carlos R. M&#233;ndez</td><td>RD$ 2,000</td><td class="mono">jmartinez</td><td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td></tr>
+                <tr><td class="mono">#REV-0040</td><td class="mono" data-date="2026-03-22T09:15">22/03/2026 09:15</td><td>Ana L. P&#233;rez</td><td>RD$ 500</td><td class="mono">jmartinez</td><td><span class="dot green"></span><span data-i18n="status.completed">Completado</span></td></tr>
+                <tr><td class="mono">#REV-0039</td><td class="mono" data-date="2026-03-18T16:42">18/03/2026 16:42</td><td>Ram&#243;n E. Castillo</td><td>RD$ 3,500</td><td class="mono">admin01</td><td><span class="dot yellow"></span><span data-i18n="status.pending">Pendiente</span></td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

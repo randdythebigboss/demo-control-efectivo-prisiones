@@ -349,6 +349,14 @@ const translations = {
     'table.module':           'M\u00f3dulo',
     'table.sentence':         'Sentencia',
     'table.entryDate2':       'Ingreso',
+    /* Account opening hints */
+    'hint.accountOpening':    'El c\u00f3digo del recluso debe estar registrado previamente. El saldo inicial puede ser cero; los dep\u00f3sitos se realizan desde el m\u00f3dulo de Transacciones.',
+    'acct.typesTitle':        'Referencia de Tipos de Cuenta',
+    'acct.standard.desc':     'L\u00edmite mensual RD$ 10,000. Uso general.',
+    'acct.trusted.desc':      'L\u00edmite ampliado RD$ 25,000. Aprobado por direcci\u00f3n.',
+    'acct.restricted.desc':   'L\u00edmite RD$ 2,000. Supervisada por seguridad.',
+    /* Reversal */
+    'reversal.lastReversals': '\u00daltimos Reversos Procesados',
   },
 
   en: {
@@ -698,6 +706,14 @@ const translations = {
     'table.module':           'Module',
     'table.sentence':         'Sentence',
     'table.entryDate2':       'Entry',
+    /* Account opening hints */
+    'hint.accountOpening':    'The inmate code must be registered first. The initial balance can be zero; deposits are made from the Transactions module.',
+    'acct.typesTitle':        'Account Type Reference',
+    'acct.standard.desc':     'Monthly limit RD$ 10,000. General use.',
+    'acct.trusted.desc':      'Extended limit RD$ 25,000. Director-approved.',
+    'acct.restricted.desc':   'Limit RD$ 2,000. Security-supervised.',
+    /* Reversal */
+    'reversal.lastReversals': 'Last Processed Reversals',
   }
 };
 
@@ -772,6 +788,33 @@ function setLanguage(lang) {
 
   /* Re-render date */
   renderDate();
+
+  /* Re-format inline dates by locale */
+  formatInlineDates(lang);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   INLINE DATE FORMATTER
+   Elements with data-date="YYYY-MM-DDTHH:mm" are reformatted
+   to DD/MM/YYYY HH:mm (ES) or MM/DD/YYYY HH:mm (EN)
+═══════════════════════════════════════════════════════════ */
+function formatInlineDates(lang) {
+  document.querySelectorAll('[data-date]').forEach(function (el) {
+    const raw = el.getAttribute('data-date');
+    if (!raw) return;
+    const d   = new Date(raw);
+    if (isNaN(d)) return;
+    const dd  = String(d.getDate()).padStart(2, '0');
+    const mm  = String(d.getMonth() + 1).padStart(2, '0');
+    const yy  = d.getFullYear();
+    const hh  = String(d.getHours()).padStart(2, '0');
+    const min = String(d.getMinutes()).padStart(2, '0');
+    const hasTime = raw.includes('T') && (d.getHours() || d.getMinutes());
+    const timePart = hasTime ? ' ' + hh + ':' + min : '';
+    el.textContent = lang === 'en'
+      ? mm + '/' + dd + '/' + yy + timePart
+      : dd + '/' + mm + '/' + yy + timePart;
+  });
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -946,6 +989,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ── Initial language & render ── */
   setLanguage(currentLang);
+  formatInlineDates(currentLang);
   navigateTo('dashboard');
 
   /* ── Clock ── */
