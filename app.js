@@ -929,15 +929,18 @@ document.addEventListener('DOMContentLoaded', function () {
   /* ── Demo buttons (no real submission) ── */
   document.querySelectorAll('.btn-primary, .btn-danger, .btn-secondary').forEach(btn => {
     if (btn.classList.contains('lang-btn')) return;
-    btn.addEventListener('click', function (e) {
+    btn.addEventListener('click', function () {
       const label = this.textContent.trim();
-      /* Only intercept submit-style actions, not navigation */
-      const submitKeywords = ['Confirmar', 'Procesar', 'Abrir', 'Cerrar', 'Generar', 'Registrar',
-                              'Confirm', 'Process', 'Open', 'Close', 'Generate', 'Register'];
+      /* Only intercept submit-style actions */
+      const submitKeywords = [
+        'Confirmar','Procesar','Abrir','Cerrar','Generar','Registrar','Guardar','Exportar','Escalar','Archivar','Aplicar',
+        'Confirm','Process','Open','Close','Generate','Register','Save','Export','Escalate','Archive','Apply'
+      ];
+      const dangerKeywords = ['Procesar Excarcelación','Escalar','Escalate','Process Release'];
       const isSubmit = submitKeywords.some(kw => label.startsWith(kw));
-      if (isSubmit) {
-        showToast(label);
-      }
+      if (!isSubmit) return;
+      const isDanger = dangerKeywords.some(kw => label.includes(kw));
+      showToast(label, isDanger ? 'warning' : 'success');
     });
   });
 
@@ -953,10 +956,14 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ═══════════════════════════════════════════════════════════
    TOAST NOTIFICATION (demo feedback)
 ═══════════════════════════════════════════════════════════ */
-function showToast(actionLabel) {
-  const msg = currentLang === 'en'
-    ? 'Demo mode \u2014 action simulated: ' + actionLabel
-    : 'Modo demo \u2014 acci\u00f3n simulada: ' + actionLabel;
+function showToast(actionLabel, type) {
+  type = type || 'success';
+
+  const configs = {
+    success: { bg: '#1a2742', accent: '#1a56db', icon: '\u2713', title: currentLang === 'en' ? 'Action simulated' : 'Acci\u00f3n simulada' },
+    warning: { bg: '#7c2d12', accent: '#f97316', icon: '\u26a0', title: currentLang === 'en' ? 'Requires confirmation' : 'Requiere confirmaci\u00f3n' },
+  };
+  const cfg = configs[type] || configs.success;
 
   let toast = document.getElementById('demoToast');
   if (!toast) {
@@ -964,19 +971,32 @@ function showToast(actionLabel) {
     toast.id = 'demoToast';
     toast.style.cssText = [
       'position:fixed', 'bottom:28px', 'right:28px', 'z-index:9999',
-      'background:#1a2742', 'color:#fff', 'padding:12px 20px',
+      'padding:14px 18px',
       'border-radius:8px', 'font-size:13px', 'font-family:inherit',
-      'box-shadow:0 4px 20px rgba(0,0,0,0.25)',
-      'border-left:4px solid #1a56db',
+      'box-shadow:0 4px 24px rgba(0,0,0,0.30)',
       'max-width:340px', 'line-height:1.4',
-      'transition:opacity 300ms ease'
+      'transition:opacity 350ms ease, transform 350ms ease',
+      'display:flex', 'align-items:flex-start', 'gap:12px'
     ].join(';');
     document.body.appendChild(toast);
   }
 
-  toast.textContent = msg;
-  toast.style.opacity = '1';
+  toast.style.background   = cfg.bg;
+  toast.style.borderLeft   = '4px solid ' + cfg.accent;
+  toast.style.color        = '#fff';
+  toast.style.opacity      = '1';
+  toast.style.transform    = 'translateY(0)';
+
+  toast.innerHTML =
+    '<span style="font-size:18px;flex-shrink:0;line-height:1">' + cfg.icon + '</span>' +
+    '<span style="display:flex;flex-direction:column;gap:2px">' +
+      '<span style="font-weight:700;font-size:13px">' + cfg.title + '</span>' +
+      '<span style="font-size:12px;opacity:0.80">' + actionLabel + '</span>' +
+    '</span>';
 
   clearTimeout(toast._timer);
-  toast._timer = setTimeout(() => { toast.style.opacity = '0'; }, 3000);
+  toast._timer = setTimeout(function () {
+    toast.style.opacity   = '0';
+    toast.style.transform = 'translateY(8px)';
+  }, 3200);
 }
