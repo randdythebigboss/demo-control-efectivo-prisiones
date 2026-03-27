@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l \"c:/Users/rrfeliz/OneDrive - Santo Domingo Motors Company \\(SADOMOCO\\)/Desktop/workspace/demo-control-efectivo-prisiones/styles.css\" \"c:/Users/rrfeliz/OneDrive - Santo Domingo Motors Company \\(SADOMOCO\\)/Desktop/workspace/demo-control-efectivo-prisiones/app.js\" \"c:/Users/rrfeliz/OneDrive - Santo Domingo Motors Company \\(SADOMOCO\\)/Desktop/workspace/demo-control-efectivo-prisiones/index.html\")",
+      "Bash(wc -l \"c:\\\\Users\\\\rrfeliz\\\\OneDrive - Santo Domingo Motors Company \\(SADOMOCO\\)\\\\Desktop\\\\workspace\\\\demo-control-efectivo-prisiones\\\\index.html\" \"c:\\\\Users\\\\rrfeliz\\\\OneDrive - Santo Domingo Motors Company \\(SADOMOCO\\)\\\\Desktop\\\\workspace\\\\demo-control-efectivo-prisiones\\\\styles.css\" \"c:\\\\Users\\\\rrfeliz\\\\OneDrive - Santo Domingo Motors Company \\(SADOMOCO\\)\\\\Desktop\\\\workspace\\\\demo-control-efectivo-prisiones\\\\app.js\")"
+    ]
+  }
+}
