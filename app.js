@@ -1632,6 +1632,18 @@ function posAddToRecent(name, total, ref) {
   while (list.children.length > 5) list.removeChild(list.lastChild);
 }
 
+/* ── Inventory helpers ── */
+function invUpdatePriorityHint(sel) {
+  var hint = document.getElementById('invPriorityHint');
+  if (!hint) return;
+  var val = sel.value;
+  hint.classList.remove('inv-priority-hint--high', 'inv-priority-hint--medium', 'inv-priority-hint--low');
+  hint.classList.add('inv-priority-hint--' + val);
+  var keyMap = { high: 'inv.priority.hint.high', medium: 'inv.priority.hint.medium', low: 'inv.priority.hint.low' };
+  hint.textContent = t(keyMap[val] || keyMap.high);
+  hint.setAttribute('data-i18n', keyMap[val] || keyMap.high);
+}
+
 /* ── Event listeners ── */
 document.addEventListener('DOMContentLoaded', function () {
 

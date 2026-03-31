@@ -1059,7 +1059,7 @@
 
               <!-- Actions -->
               <div class="pos-cart-actions">
-                <button class="btn btn-ghost" style="flex:1" onclick="posClearCart()" data-i18n="btn.cancel">Cancelar</button>
+                <button class="btn btn-ghost pos-cancel-btn" style="flex:1" onclick="posClearCart()" data-i18n="btn.cancel">Cancelar</button>
                 <button class="btn btn-primary pos-confirm-btn" id="posConfirmBtn" style="flex:2"
                         onclick="posConfirmSale()" data-i18n="pos.confirmSale">Confirmar Venta</button>
               </div>
@@ -1662,6 +1662,18 @@
           </div>
         </div>
 
+        <div class="inv-rep-summary-bar">
+          <span class="inv-rep-sb-icon">&#9888;</span>
+          <div class="inv-rep-sb-body">
+            <strong data-i18n="inv.rep.summaryCount">4 productos</strong>
+            <span data-i18n="inv.rep.summaryBar">con necesidad de reposici&#243;n</span>
+          </div>
+          <div class="inv-rep-sb-chips">
+            <span class="inv-badge inv-badge-outofstock">2 sin stock</span>
+            <span class="inv-badge inv-badge-lowstock">2 stock bajo</span>
+          </div>
+        </div>
+
         <div class="inv-rep-layout">
 
           <!-- Left: form -->
@@ -1705,13 +1717,14 @@
                 <label class="form-label" data-i18n="inv.rep.supplier">Proveedor / fuente</label>
                 <input type="text" class="fc" value="Almac&#233;n Central DGP" placeholder="...">
               </div>
-              <div class="form-group">
+              <div class="form-group inv-priority-group">
                 <label class="form-label" data-i18n="inv.rep.priority">Prioridad</label>
-                <select class="fc">
-                  <option data-i18n="inv.priority.high">Alta</option>
-                  <option data-i18n="inv.priority.medium">Media</option>
-                  <option data-i18n="inv.priority.low">Baja</option>
+                <select class="fc" onchange="invUpdatePriorityHint(this)">
+                  <option value="high" data-i18n="inv.priority.high">Alta</option>
+                  <option value="medium" data-i18n="inv.priority.medium">Media</option>
+                  <option value="low" data-i18n="inv.priority.low">Baja</option>
                 </select>
+                <p class="inv-priority-hint inv-priority-hint--high" id="invPriorityHint" data-i18n="inv.priority.hint.high">Alta &mdash; requiere atenci&#243;n inmediata</p>
               </div>
               <div class="form-group">
                 <label class="form-label" data-i18n="inv.rep.expectedDate">Fecha esperada</label>
@@ -1719,7 +1732,7 @@
               </div>
               <div class="form-group form-group--full">
                 <label class="form-label" data-i18n="inv.rep.notes">Observaciones</label>
-                <textarea class="fc" rows="3" placeholder="..."></textarea>
+                <textarea class="fc" rows="3" data-i18n-placeholder="inv.rep.notes.placeholder" placeholder="Motivo de la solicitud, instrucciones especiales..."></textarea>
               </div>
             </div>
             <div class="form-actions">
