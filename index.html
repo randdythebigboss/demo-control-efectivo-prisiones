@@ -976,8 +976,11 @@
           <!-- ── RIGHT: Cart + Receipt + Recent ── -->
           <div class="pos-right">
             <div class="pos-panel pos-cart-panel">
-              <div class="pos-panel-header">
-                <span class="pos-panel-title" data-i18n="pos.cart">Carrito</span>
+              <div class="pos-panel-header pos-cart-header">
+                <div class="pos-cart-header-main">
+                  <span class="pos-panel-title" data-i18n="pos.cart">Carrito</span>
+                  <p class="pos-cart-subtitle" data-i18n="pos.cartSubtitle">Resumen de venta actual</p>
+                </div>
                 <button class="pos-clear-btn" onclick="posClearCart()" data-i18n="pos.clear">Limpiar</button>
               </div>
 

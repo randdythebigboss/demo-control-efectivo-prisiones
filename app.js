@@ -52,6 +52,7 @@ const translations = {
     'pos.total':             'Total',
     'pos.balanceAfter':      'Saldo tras venta',
     'pos.confirmSale':       'Confirmar Venta',
+    'pos.cartSubtitle':          'Resumen de venta actual',
     'pos.saleComplete':          'Venta registrada',
     'pos.restricted':            'Cuenta restringida \u2014 ventas bloqueadas',
     'pos.cartHint':              'Selecciona productos del cat\u00e1logo',
@@ -454,6 +455,7 @@ const translations = {
     'pos.total':             'Total',
     'pos.balanceAfter':      'Balance after sale',
     'pos.confirmSale':       'Confirm Sale',
+    'pos.cartSubtitle':          'Current sale summary',
     'pos.saleComplete':          'Sale recorded',
     'pos.restricted':            'Restricted account \u2014 sales blocked',
     'pos.cartHint':              'Select products from the catalog',
@@ -1278,8 +1280,15 @@ function posUpdateTotals() {
   if (elSub)   elSub.textContent   = fmtTotal;
   if (elTotal) elTotal.textContent = fmtTotal;
   if (elAfter) {
-    elAfter.textContent = fmtAfter;
-    elAfter.style.color = after < 0 ? 'var(--clr-red)' : 'var(--clr-green)';
+    elAfter.textContent  = fmtAfter;
+    elAfter.style.color  = '';   /* let class control color */
+    var balBox = elAfter.closest('.pos-balance-check');
+    if (balBox) {
+      balBox.classList.remove('pos-balance-healthy', 'pos-balance-low', 'pos-balance-insufficient');
+      if (after < 0)        balBox.classList.add('pos-balance-insufficient');
+      else if (after < 500) balBox.classList.add('pos-balance-low');
+      else                  balBox.classList.add('pos-balance-healthy');
+    }
   }
 
   var hasItems = posGetItems().length > 0;
