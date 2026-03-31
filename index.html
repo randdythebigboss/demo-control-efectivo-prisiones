@@ -1146,20 +1146,24 @@
 
         <!-- KPI row -->
         <div class="kpi-row">
-          <div class="kpi-card">
+          <div class="kpi-card kpi-blue">
+            <div class="kpi-icon">&#128230;</div>
             <div class="kpi-value">11</div>
             <div class="kpi-label" data-i18n="inv.kpi.active">Productos activos</div>
           </div>
-          <div class="kpi-card">
-            <div class="kpi-value" style="color:#d97706">4</div>
+          <div class="kpi-card kpi-amber">
+            <div class="kpi-icon">&#9888;</div>
+            <div class="kpi-value kv-amber">4</div>
             <div class="kpi-label" data-i18n="inv.kpi.lowStock">Stock bajo</div>
           </div>
-          <div class="kpi-card">
-            <div class="kpi-value" style="color:var(--clr-red)">2</div>
+          <div class="kpi-card kpi-red">
+            <div class="kpi-icon">&#128683;</div>
+            <div class="kpi-value kv-red">2</div>
             <div class="kpi-label" data-i18n="inv.kpi.outOfStock">Sin stock</div>
           </div>
-          <div class="kpi-card">
-            <div class="kpi-value green">3</div>
+          <div class="kpi-card kpi-green">
+            <div class="kpi-icon">&#128260;</div>
+            <div class="kpi-value kv-green">3</div>
             <div class="kpi-label" data-i18n="inv.kpi.movementsToday">Movimientos hoy</div>
           </div>
         </div>
@@ -1290,7 +1294,7 @@
             <h1 data-i18n="inv.catalog.title">Cat&#225;logo de Productos</h1>
             <p class="page-subtitle" data-i18n="inv.catalog.subtitle">Gesti&#243;n de productos del economato penitenciario</p>
           </div>
-          <button class="btn btn-primary" data-i18n="btn.add">+ Nuevo Producto</button>
+          <button class="btn btn-primary" data-i18n="btn.addProduct">Agregar Producto</button>
         </div>
 
         <!-- Filter bar -->
@@ -1506,7 +1510,7 @@
             <h1 data-i18n="inv.movements.title">Movimientos de Inventario</h1>
             <p class="page-subtitle" data-i18n="inv.movements.subtitle">Historial de entradas, salidas y ajustes</p>
           </div>
-          <button class="btn btn-primary" data-i18n="btn.export">Exportar</button>
+          <button class="btn btn-primary" data-i18n="btn.exportMovements">Exportar Movimientos</button>
         </div>
 
         <!-- Filter bar -->

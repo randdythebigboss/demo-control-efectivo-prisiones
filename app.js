@@ -270,6 +270,16 @@ const translations = {
     'btn.processTransfer':   'Procesar Traslado',
     'btn.processRelease':    'Procesar Excarcelaci\u00f3n',
     'btn.processDelivery':   'Procesar Entrega',
+    'btn.addProduct':        'Agregar Producto',
+    'btn.exportMovements':   'Exportar Movimientos',
+
+    /* Inventory replenishment UI */
+    'inv.rep.summaryCount':        '4 productos',
+    'inv.rep.summaryBar':          'con necesidad de reposici\u00f3n',
+    'inv.priority.hint.high':      'Alta \u2014 requiere atenci\u00f3n inmediata',
+    'inv.priority.hint.medium':    'Media \u2014 reposici\u00f3n en los pr\u00f3ximos d\u00edas',
+    'inv.priority.hint.low':       'Baja \u2014 sin urgencia inmediata',
+    'inv.rep.notes.placeholder':   'Motivo de la solicitud, instrucciones especiales...',
 
     /* Search placeholders */
     'search.placeholder': 'Buscar...',
@@ -740,6 +750,16 @@ const translations = {
     'btn.processTransfer':   'Process Transfer',
     'btn.processRelease':    'Process Release',
     'btn.processDelivery':   'Process Delivery',
+    'btn.addProduct':        'Add Product',
+    'btn.exportMovements':   'Export Movements',
+
+    /* Inventory replenishment UI */
+    'inv.rep.summaryCount':        '4 products',
+    'inv.rep.summaryBar':          'need replenishment',
+    'inv.priority.hint.high':      'High \u2014 requires immediate attention',
+    'inv.priority.hint.medium':    'Medium \u2014 replenish within the next few days',
+    'inv.priority.hint.low':       'Low \u2014 no immediate urgency',
+    'inv.rep.notes.placeholder':   'Reason for request, special instructions...',
 
     /* Search placeholders */
     'search.placeholder': 'Search...',
