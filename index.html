@@ -73,6 +73,20 @@
       </a>
 
       <div class="nav-group">
+        <button class="nav-group-toggle" data-group="inventory">
+          <span class="nav-icon">&#128230;</span>
+          <span class="nav-label" data-i18n="nav.inventory">Inventario</span>
+          <span class="nav-caret">&#8250;</span>
+        </button>
+        <div class="nav-group-items" id="group-inventory">
+          <a class="nav-sub-item" href="#" data-section="inventory-overview"><span data-i18n="nav.inventory.overview">Resumen</span></a>
+          <a class="nav-sub-item" href="#" data-section="inventory-catalog"><span data-i18n="nav.inventory.catalog">Cat&#225;logo de Productos</span></a>
+          <a class="nav-sub-item" href="#" data-section="inventory-movements"><span data-i18n="nav.inventory.movements">Movimientos</span></a>
+          <a class="nav-sub-item" href="#" data-section="inventory-replenishment"><span data-i18n="nav.inventory.replenishment">Reposici&#243;n</span></a>
+        </div>
+      </div>
+
+      <div class="nav-group">
         <button class="nav-group-toggle" data-group="cashdesk">
           <span class="nav-icon">&#128176;</span>
           <span class="nav-label" data-i18n="nav.cashdesk">Control de Caja</span>
@@ -1119,6 +1133,677 @@
           </div><!-- /.pos-right -->
 
         </div><!-- /.pos-layout -->
+      </section>
+
+      <!-- ══════════════════ INVENTORY OVERVIEW ══════════════════ -->
+      <section class="page-section" id="section-inventory-overview">
+        <div class="page-header">
+          <div>
+            <h1 data-i18n="nav.inventory">Inventario</h1>
+            <p class="page-subtitle" data-i18n="inv.subtitle">Control de productos, stock y abastecimiento</p>
+          </div>
+        </div>
+
+        <!-- KPI row -->
+        <div class="kpi-row">
+          <div class="kpi-card">
+            <div class="kpi-value">11</div>
+            <div class="kpi-label" data-i18n="inv.kpi.active">Productos activos</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value" style="color:#d97706">4</div>
+            <div class="kpi-label" data-i18n="inv.kpi.lowStock">Stock bajo</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value" style="color:var(--clr-red)">2</div>
+            <div class="kpi-label" data-i18n="inv.kpi.outOfStock">Sin stock</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-value green">3</div>
+            <div class="kpi-label" data-i18n="inv.kpi.movementsToday">Movimientos hoy</div>
+          </div>
+        </div>
+
+        <!-- Two-panel grid -->
+        <div class="inv-overview-grid">
+
+          <!-- Critical alerts -->
+          <div class="inv-panel">
+            <div class="inv-panel-header">
+              <span class="inv-panel-title" data-i18n="inv.alerts">Alertas cr&#237;ticas</span>
+              <span class="badge badge-error">6</span>
+            </div>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th data-i18n="inv.table.product">Producto</th>
+                  <th data-i18n="inv.table.stock">Stock actual</th>
+                  <th data-i18n="inv.table.reorder">Nivel de reorden</th>
+                  <th data-i18n="table.status">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Leche Entera 1L</strong></td>
+                  <td class="mono inv-stock-out">0</td>
+                  <td class="mono muted">25</td>
+                  <td><span class="inv-badge inv-badge-outofstock" data-i18n="inv.status.outOfStock">Sin stock</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Desodorante Rexona</strong></td>
+                  <td class="mono inv-stock-out">0</td>
+                  <td class="mono muted">10</td>
+                  <td><span class="inv-badge inv-badge-outofstock" data-i18n="inv.status.outOfStock">Sin stock</span></td>
+                </tr>
+                <tr>
+                  <td>Sardinas en lata</td>
+                  <td class="mono inv-stock-low">4</td>
+                  <td class="mono muted">15</td>
+                  <td><span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span></td>
+                </tr>
+                <tr>
+                  <td>Jugo Natura 250ml</td>
+                  <td class="mono inv-stock-low">5</td>
+                  <td class="mono muted">20</td>
+                  <td><span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span></td>
+                </tr>
+                <tr>
+                  <td>Jab&#243;n Rey</td>
+                  <td class="mono inv-stock-low">8</td>
+                  <td class="mono muted">20</td>
+                  <td><span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span></td>
+                </tr>
+                <tr>
+                  <td>Jab&#243;n Palmolive</td>
+                  <td class="mono inv-stock-low">6</td>
+                  <td class="mono muted">15</td>
+                  <td><span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Recent movements -->
+          <div class="inv-panel">
+            <div class="inv-panel-header">
+              <span class="inv-panel-title" data-i18n="inv.recentMovements">Movimientos recientes</span>
+            </div>
+            <div class="inv-movements-list">
+              <div class="inv-mov-item">
+                <span class="inv-badge inv-badge-sale" data-i18n="inv.type.sale">Salida venta</span>
+                <div class="inv-mov-info">
+                  <span class="inv-mov-product">Coca-Cola 355ml</span>
+                  <span class="inv-mov-meta mono muted">#POS-0031 &bull; 09:12 La Victoria</span>
+                </div>
+                <span class="inv-mov-qty inv-qty-out mono">&#8722;2</span>
+              </div>
+              <div class="inv-mov-item">
+                <span class="inv-badge inv-badge-sale" data-i18n="inv.type.sale">Salida venta</span>
+                <div class="inv-mov-info">
+                  <span class="inv-mov-product">Pasta dental</span>
+                  <span class="inv-mov-meta mono muted">#POS-0030 &bull; 08:55 Najayo</span>
+                </div>
+                <span class="inv-mov-qty inv-qty-out mono">&#8722;1</span>
+              </div>
+              <div class="inv-mov-item">
+                <span class="inv-badge inv-badge-sale" data-i18n="inv.type.sale">Salida venta</span>
+                <div class="inv-mov-info">
+                  <span class="inv-mov-product">Arroz Diana 5lb</span>
+                  <span class="inv-mov-meta mono muted">#POS-0029 &bull; 08:30 La Victoria</span>
+                </div>
+                <span class="inv-mov-qty inv-qty-out mono">&#8722;1</span>
+              </div>
+              <div class="inv-mov-item">
+                <span class="inv-badge inv-badge-adjustment" data-i18n="inv.type.adjustment">Ajuste</span>
+                <div class="inv-mov-info">
+                  <span class="inv-mov-product">Sardinas en lata</span>
+                  <span class="inv-mov-meta mono muted">ADJ-0012 &bull; 30/03 Rafey</span>
+                </div>
+                <span class="inv-mov-qty inv-qty-out mono">&#8722;3</span>
+              </div>
+              <div class="inv-mov-item">
+                <span class="inv-badge inv-badge-entry" data-i18n="inv.type.entry">Entrada</span>
+                <div class="inv-mov-info">
+                  <span class="inv-mov-product">Arroz Diana 5lb</span>
+                  <span class="inv-mov-meta mono muted">REP-0044 &bull; 30/03 Central</span>
+                </div>
+                <span class="inv-mov-qty inv-qty-in mono">+50</span>
+              </div>
+              <div class="inv-mov-item">
+                <span class="inv-badge inv-badge-entry" data-i18n="inv.type.entry">Entrada</span>
+                <div class="inv-mov-info">
+                  <span class="inv-mov-product">Pan de agua</span>
+                  <span class="inv-mov-meta mono muted">REP-0043 &bull; 30/03 Central</span>
+                </div>
+                <span class="inv-mov-qty inv-qty-in mono">+100</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.inv-overview-grid -->
+      </section>
+
+      <!-- ══════════════════ INVENTORY CATALOG ══════════════════ -->
+      <section class="page-section" id="section-inventory-catalog">
+        <div class="page-header">
+          <div>
+            <h1 data-i18n="inv.catalog.title">Cat&#225;logo de Productos</h1>
+            <p class="page-subtitle" data-i18n="inv.catalog.subtitle">Gesti&#243;n de productos del economato penitenciario</p>
+          </div>
+          <button class="btn btn-primary" data-i18n="btn.add">+ Nuevo Producto</button>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="inv-filter-bar">
+          <input type="text" class="fc" style="flex:1;min-width:180px" placeholder="Buscar producto..." data-i18n-placeholder="btn.search">
+          <select class="fc">
+            <option data-i18n="pos.cat.all">Todos</option>
+            <option data-i18n="pos.cat.food">Alimentos</option>
+            <option data-i18n="pos.cat.drinks">Bebidas</option>
+            <option data-i18n="pos.cat.hygiene">Higiene</option>
+            <option data-i18n="pos.cat.other">Otros</option>
+          </select>
+          <select class="fc">
+            <option>— Estado —</option>
+            <option data-i18n="inv.status.active">Activo</option>
+            <option data-i18n="inv.status.lowStock">Stock bajo</option>
+            <option data-i18n="inv.status.outOfStock">Sin stock</option>
+          </select>
+          <button class="btn btn-ghost" data-i18n="btn.search">Buscar</button>
+        </div>
+
+        <!-- Product table -->
+        <div class="table-card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="inv.table.code">C&#243;digo</th>
+                <th data-i18n="inv.table.product">Producto</th>
+                <th data-i18n="inv.table.category">Categor&#237;a</th>
+                <th data-i18n="inv.table.unit">Unidad</th>
+                <th data-i18n="inv.table.price">Precio venta</th>
+                <th data-i18n="inv.table.currentStock">Stock actual</th>
+                <th data-i18n="inv.table.reorderLevel">Reorden</th>
+                <th data-i18n="table.status">Estado</th>
+                <th data-i18n="inv.table.actions">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono muted">PROD-001</td>
+                <td><strong>Arroz Diana 5lb</strong></td>
+                <td data-i18n="pos.cat.food">Alimentos</td>
+                <td>Lb</td>
+                <td class="mono">RD$ 285</td>
+                <td class="mono inv-stock-ok">42</td>
+                <td class="mono muted">20</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr>
+                <td class="mono muted">PROD-002</td>
+                <td><strong>Pan de agua</strong></td>
+                <td data-i18n="pos.cat.food">Alimentos</td>
+                <td>Und</td>
+                <td class="mono">RD$ 50</td>
+                <td class="mono inv-stock-ok">120</td>
+                <td class="mono muted">50</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr class="inv-row-alert">
+                <td class="mono muted">PROD-003</td>
+                <td><strong>Sardinas en lata</strong></td>
+                <td data-i18n="pos.cat.food">Alimentos</td>
+                <td>Und</td>
+                <td class="mono">RD$ 95</td>
+                <td class="mono inv-stock-low">4</td>
+                <td class="mono muted">15</td>
+                <td><span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr>
+                <td class="mono muted">PROD-004</td>
+                <td><strong>Espagueti 1lb</strong></td>
+                <td data-i18n="pos.cat.food">Alimentos</td>
+                <td>Lb</td>
+                <td class="mono">RD$ 75</td>
+                <td class="mono inv-stock-ok">30</td>
+                <td class="mono muted">20</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr class="inv-row-critical">
+                <td class="mono muted">PROD-005</td>
+                <td><strong>Leche Entera 1L</strong></td>
+                <td data-i18n="pos.cat.food">Alimentos</td>
+                <td>Lt</td>
+                <td class="mono">RD$ 110</td>
+                <td class="mono inv-stock-out">0</td>
+                <td class="mono muted">25</td>
+                <td><span class="inv-badge inv-badge-outofstock" data-i18n="inv.status.outOfStock">Sin stock</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr>
+                <td class="mono muted">PROD-006</td>
+                <td><strong>Fideo Macarr&#243;n</strong></td>
+                <td data-i18n="pos.cat.food">Alimentos</td>
+                <td>Lb</td>
+                <td class="mono">RD$ 65</td>
+                <td class="mono inv-stock-ok">25</td>
+                <td class="mono muted">20</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr>
+                <td class="mono muted">PROD-007</td>
+                <td><strong>Coca-Cola 355ml</strong></td>
+                <td data-i18n="pos.cat.drinks">Bebidas</td>
+                <td>Und</td>
+                <td class="mono">RD$ 75</td>
+                <td class="mono inv-stock-ok">36</td>
+                <td class="mono muted">30</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr>
+                <td class="mono muted">PROD-008</td>
+                <td><strong>Agua Bonafont 1L</strong></td>
+                <td data-i18n="pos.cat.drinks">Bebidas</td>
+                <td>Und</td>
+                <td class="mono">RD$ 35</td>
+                <td class="mono inv-stock-ok">88</td>
+                <td class="mono muted">40</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr class="inv-row-alert">
+                <td class="mono muted">PROD-009</td>
+                <td><strong>Jugo Natura 250ml</strong></td>
+                <td data-i18n="pos.cat.drinks">Bebidas</td>
+                <td>Und</td>
+                <td class="mono">RD$ 55</td>
+                <td class="mono inv-stock-low">5</td>
+                <td class="mono muted">20</td>
+                <td><span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr class="inv-row-alert">
+                <td class="mono muted">PROD-010</td>
+                <td><strong>Jab&#243;n Palmolive</strong></td>
+                <td data-i18n="pos.cat.hygiene">Higiene</td>
+                <td>Und</td>
+                <td class="mono">RD$ 60</td>
+                <td class="mono inv-stock-low">6</td>
+                <td class="mono muted">15</td>
+                <td><span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr>
+                <td class="mono muted">PROD-011</td>
+                <td><strong>Pasta dental</strong></td>
+                <td data-i18n="pos.cat.hygiene">Higiene</td>
+                <td>Und</td>
+                <td class="mono">RD$ 80</td>
+                <td class="mono inv-stock-ok">18</td>
+                <td class="mono muted">15</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr class="inv-row-critical">
+                <td class="mono muted">PROD-012</td>
+                <td><strong>Desodorante Rexona</strong></td>
+                <td data-i18n="pos.cat.hygiene">Higiene</td>
+                <td>Und</td>
+                <td class="mono">RD$ 145</td>
+                <td class="mono inv-stock-out">0</td>
+                <td class="mono muted">10</td>
+                <td><span class="inv-badge inv-badge-outofstock" data-i18n="inv.status.outOfStock">Sin stock</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr class="inv-row-alert">
+                <td class="mono muted">PROD-013</td>
+                <td><strong>Jab&#243;n Rey</strong></td>
+                <td data-i18n="pos.cat.hygiene">Higiene</td>
+                <td>Und</td>
+                <td class="mono">RD$ 45</td>
+                <td class="mono inv-stock-low">8</td>
+                <td class="mono muted">20</td>
+                <td><span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr>
+                <td class="mono muted">PROD-014</td>
+                <td><strong>Cuaderno 50h</strong></td>
+                <td data-i18n="pos.cat.other">Otros</td>
+                <td>Und</td>
+                <td class="mono">RD$ 120</td>
+                <td class="mono inv-stock-ok">15</td>
+                <td class="mono muted">10</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+              <tr>
+                <td class="mono muted">PROD-015</td>
+                <td><strong>Bol&#237;grafo BIC</strong></td>
+                <td data-i18n="pos.cat.other">Otros</td>
+                <td>Und</td>
+                <td class="mono">RD$ 25</td>
+                <td class="mono inv-stock-ok">60</td>
+                <td class="mono muted">30</td>
+                <td><span class="inv-badge inv-badge-active" data-i18n="inv.status.active">Activo</span></td>
+                <td><button class="btn-link" data-i18n="btn.view">Ver</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ INVENTORY MOVEMENTS ══════════════════ -->
+      <section class="page-section" id="section-inventory-movements">
+        <div class="page-header">
+          <div>
+            <h1 data-i18n="inv.movements.title">Movimientos de Inventario</h1>
+            <p class="page-subtitle" data-i18n="inv.movements.subtitle">Historial de entradas, salidas y ajustes</p>
+          </div>
+          <button class="btn btn-primary" data-i18n="btn.export">Exportar</button>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="inv-filter-bar">
+          <select class="fc">
+            <option>— Tipo —</option>
+            <option data-i18n="inv.type.entry">Entrada</option>
+            <option data-i18n="inv.type.sale">Salida venta</option>
+            <option data-i18n="inv.type.adjustment">Ajuste</option>
+            <option data-i18n="inv.type.transfer">Traslado</option>
+          </select>
+          <input type="date" class="fc" value="2026-03-31">
+          <select class="fc">
+            <option>— Centro —</option>
+            <option data-i18n="center.laVictoria">La Victoria</option>
+            <option data-i18n="center.najayo">Najayo</option>
+            <option data-i18n="center.rafeyH">Rafey Hombres</option>
+          </select>
+          <button class="btn btn-ghost" data-i18n="btn.search">Buscar</button>
+        </div>
+
+        <!-- Movements table -->
+        <div class="table-card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th data-i18n="inv.table.movId">ID Movimiento</th>
+                <th data-i18n="inv.table.datetime">Fecha/Hora</th>
+                <th data-i18n="inv.table.product">Producto</th>
+                <th data-i18n="inv.table.type">Tipo</th>
+                <th data-i18n="inv.table.qty">Cantidad</th>
+                <th data-i18n="inv.table.center">Centro</th>
+                <th data-i18n="inv.table.reference">Referencia</th>
+                <th data-i18n="table.user">Usuario</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="mono muted">MOV-0089</td>
+                <td class="mono">31/03 09:12</td>
+                <td>Coca-Cola 355ml</td>
+                <td><span class="inv-badge inv-badge-sale" data-i18n="inv.type.sale">Salida venta</span></td>
+                <td class="mono inv-qty-out">&#8722;2</td>
+                <td>La Victoria</td>
+                <td class="mono">#POS-0031</td>
+                <td>Op. Marte</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0088</td>
+                <td class="mono">31/03 08:55</td>
+                <td>Pasta dental</td>
+                <td><span class="inv-badge inv-badge-sale" data-i18n="inv.type.sale">Salida venta</span></td>
+                <td class="mono inv-qty-out">&#8722;1</td>
+                <td>Najayo</td>
+                <td class="mono">#POS-0030</td>
+                <td>Op. Su&#225;rez</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0087</td>
+                <td class="mono">31/03 08:30</td>
+                <td>Arroz Diana 5lb</td>
+                <td><span class="inv-badge inv-badge-sale" data-i18n="inv.type.sale">Salida venta</span></td>
+                <td class="mono inv-qty-out">&#8722;1</td>
+                <td>La Victoria</td>
+                <td class="mono">#POS-0029</td>
+                <td>Op. Marte</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0086</td>
+                <td class="mono">30/03 15:20</td>
+                <td>Sardinas en lata</td>
+                <td><span class="inv-badge inv-badge-adjustment" data-i18n="inv.type.adjustment">Ajuste</span></td>
+                <td class="mono inv-qty-out">&#8722;3</td>
+                <td>Rafey Hombres</td>
+                <td class="mono">ADJ-0012</td>
+                <td>Administrador</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0085</td>
+                <td class="mono">30/03 11:00</td>
+                <td>Arroz Diana 5lb</td>
+                <td><span class="inv-badge inv-badge-entry" data-i18n="inv.type.entry">Entrada</span></td>
+                <td class="mono inv-qty-in">+50</td>
+                <td>Central</td>
+                <td class="mono">REP-0044</td>
+                <td>Almac&#233;n</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0084</td>
+                <td class="mono">30/03 09:30</td>
+                <td>Pan de agua</td>
+                <td><span class="inv-badge inv-badge-entry" data-i18n="inv.type.entry">Entrada</span></td>
+                <td class="mono inv-qty-in">+100</td>
+                <td>Central</td>
+                <td class="mono">REP-0043</td>
+                <td>Almac&#233;n</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0083</td>
+                <td class="mono">29/03 16:45</td>
+                <td>Jab&#243;n Palmolive</td>
+                <td><span class="inv-badge inv-badge-transfer" data-i18n="inv.type.transfer">Traslado</span></td>
+                <td class="mono inv-qty-out">&#8722;5</td>
+                <td>La Victoria &#8594; Najayo</td>
+                <td class="mono">TRF-0021</td>
+                <td>Log&#237;stica</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0082</td>
+                <td class="mono">29/03 14:20</td>
+                <td>Jugo Natura 250ml</td>
+                <td><span class="inv-badge inv-badge-adjustment" data-i18n="inv.type.adjustment">Ajuste</span></td>
+                <td class="mono inv-qty-out">&#8722;8</td>
+                <td>Rafey Hombres</td>
+                <td class="mono">ADJ-0011</td>
+                <td>Administrador</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0081</td>
+                <td class="mono">29/03 10:15</td>
+                <td>Sardinas en lata</td>
+                <td><span class="inv-badge inv-badge-sale" data-i18n="inv.type.sale">Salida venta</span></td>
+                <td class="mono inv-qty-out">&#8722;1</td>
+                <td>La Victoria</td>
+                <td class="mono">#POS-0025</td>
+                <td>Op. Marte</td>
+              </tr>
+              <tr>
+                <td class="mono muted">MOV-0080</td>
+                <td class="mono">28/03 14:30</td>
+                <td>Agua Bonafont 1L</td>
+                <td><span class="inv-badge inv-badge-entry" data-i18n="inv.type.entry">Entrada</span></td>
+                <td class="mono inv-qty-in">+60</td>
+                <td>Central</td>
+                <td class="mono">REP-0042</td>
+                <td>Almac&#233;n</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ══════════════════ INVENTORY REPLENISHMENT ══════════════════ -->
+      <section class="page-section" id="section-inventory-replenishment">
+        <div class="page-header">
+          <div>
+            <h1 data-i18n="inv.rep.title">Reposici&#243;n de Stock</h1>
+            <p class="page-subtitle" data-i18n="inv.rep.subtitle">Registro de solicitudes de reposici&#243;n</p>
+          </div>
+        </div>
+
+        <div class="inv-rep-layout">
+
+          <!-- Left: form -->
+          <div class="form-card">
+            <h3 class="form-section-title" data-i18n="inv.rep.form.title">Nueva solicitud de reposici&#243;n</h3>
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label class="form-label" data-i18n="inv.rep.product">Producto</label>
+                <select class="fc">
+                  <option>Sardinas en lata (PROD-003)</option>
+                  <option>Leche Entera 1L (PROD-005)</option>
+                  <option>Desodorante Rexona (PROD-012)</option>
+                  <option>Jab&#243;n Rey (PROD-013)</option>
+                  <option>Jugo Natura 250ml (PROD-009)</option>
+                  <option>Jab&#243;n Palmolive (PROD-010)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="inv.rep.category">Categor&#237;a</label>
+                <select class="fc">
+                  <option data-i18n="pos.cat.food">Alimentos</option>
+                  <option data-i18n="pos.cat.drinks">Bebidas</option>
+                  <option data-i18n="pos.cat.hygiene">Higiene</option>
+                  <option data-i18n="pos.cat.other">Otros</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="inv.rep.center">Centro penitenciario</label>
+                <select class="fc">
+                  <option data-i18n="center.laVictoria">La Victoria</option>
+                  <option data-i18n="center.najayo">Najayo</option>
+                  <option data-i18n="center.rafeyH">Rafey Hombres</option>
+                  <option>Central (Almac&#233;n)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="inv.rep.qty">Cantidad solicitada</label>
+                <input type="number" class="fc" min="1" value="30" placeholder="0">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="inv.rep.supplier">Proveedor / fuente</label>
+                <input type="text" class="fc" value="Almac&#233;n Central DGP" placeholder="...">
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="inv.rep.priority">Prioridad</label>
+                <select class="fc">
+                  <option data-i18n="inv.priority.high">Alta</option>
+                  <option data-i18n="inv.priority.medium">Media</option>
+                  <option data-i18n="inv.priority.low">Baja</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="inv.rep.expectedDate">Fecha esperada</label>
+                <input type="date" class="fc" value="2026-04-04">
+              </div>
+              <div class="form-group form-group--full">
+                <label class="form-label" data-i18n="inv.rep.notes">Observaciones</label>
+                <textarea class="fc" rows="3" placeholder="..."></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button class="btn btn-ghost" data-i18n="btn.cancel">Cancelar</button>
+              <button class="btn btn-primary" data-i18n="inv.rep.submit">Registrar reposici&#243;n</button>
+            </div>
+          </div>
+
+          <!-- Right: side panels -->
+          <div class="inv-rep-side">
+
+            <!-- Suggested restocking -->
+            <div class="inv-panel">
+              <div class="inv-panel-header">
+                <span class="inv-panel-title" data-i18n="inv.rep.suggested">Reposiciones sugeridas</span>
+              </div>
+              <div style="padding:12px 16px; display:flex; flex-direction:column; gap:0">
+                <div class="inv-rep-suggest-item">
+                  <div>
+                    <div class="inv-rep-suggest-name">Leche Entera 1L</div>
+                    <div class="inv-rep-suggest-qty muted">Stock: 0 &bull; Reorden: 25</div>
+                  </div>
+                  <span class="inv-badge inv-badge-outofstock">&#9888; Urgente</span>
+                </div>
+                <div class="inv-rep-suggest-item">
+                  <div>
+                    <div class="inv-rep-suggest-name">Desodorante Rexona</div>
+                    <div class="inv-rep-suggest-qty muted">Stock: 0 &bull; Reorden: 10</div>
+                  </div>
+                  <span class="inv-badge inv-badge-outofstock">&#9888; Urgente</span>
+                </div>
+                <div class="inv-rep-suggest-item">
+                  <div>
+                    <div class="inv-rep-suggest-name">Sardinas en lata</div>
+                    <div class="inv-rep-suggest-qty muted">Stock: 4 &bull; Reorden: 15</div>
+                  </div>
+                  <span class="inv-badge inv-badge-lowstock">Stock bajo</span>
+                </div>
+                <div class="inv-rep-suggest-item">
+                  <div>
+                    <div class="inv-rep-suggest-name">Jab&#243;n Rey</div>
+                    <div class="inv-rep-suggest-qty muted">Stock: 8 &bull; Reorden: 20</div>
+                  </div>
+                  <span class="inv-badge inv-badge-lowstock">Stock bajo</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pending requests -->
+            <div class="inv-panel">
+              <div class="inv-panel-header">
+                <span class="inv-panel-title" data-i18n="inv.rep.pending">Solicitudes pendientes</span>
+                <span class="badge badge-warning">3</span>
+              </div>
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="inv.rep.table.id">ID</th>
+                    <th data-i18n="inv.rep.table.product">Producto</th>
+                    <th data-i18n="inv.rep.table.qty">Cant.</th>
+                    <th data-i18n="inv.rep.table.status">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mono muted">REP-0045</td>
+                    <td>Sardinas en lata</td>
+                    <td class="mono">30</td>
+                    <td><span class="badge badge-pending" data-i18n="status.pending">Pendiente</span></td>
+                  </tr>
+                  <tr>
+                    <td class="mono muted">REP-0046</td>
+                    <td>Leche Entera 1L</td>
+                    <td class="mono">48</td>
+                    <td><span class="badge badge-pending" data-i18n="status.pending">Pendiente</span></td>
+                  </tr>
+                  <tr>
+                    <td class="mono muted">REP-0047</td>
+                    <td>Desodorante Rexona</td>
+                    <td class="mono">24</td>
+                    <td><span class="badge badge-deposit" data-i18n="status.completed">Aprobado</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div><!-- /.inv-rep-side -->
+        </div><!-- /.inv-rep-layout -->
       </section>
 
       <!-- ══════════════════ CASHDESK OPENING ══════════════════ -->
