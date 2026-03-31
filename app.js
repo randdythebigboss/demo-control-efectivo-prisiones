@@ -27,6 +27,53 @@ const translations = {
     'nav.transactions.deposits':  'Dep\u00f3sitos',
     'nav.transactions.withdrawals':'Retiros',
     'nav.transactions.reversal':  'Reverso de Transacci\u00f3n',
+    /* POS */
+    'nav.pos':               'Punto de Venta',
+    'pos.subtitle':          'Terminal de ventas para economato penitenciario',
+    'pos.sessionOpen':       'Sesi\u00f3n abierta',
+    'pos.inmate':            'Recluso',
+    'pos.searchInmate':      'Buscar recluso...',
+    'pos.availableBalance':  'Saldo disponible',
+    'pos.monthlyLimit':      'L\u00edmite mensual: RD$ 10,000',
+    'pos.lastPurchase':      '\u00daltima compra',
+    'pos.products':          'Productos',
+    'pos.searchProduct':     'Buscar producto...',
+    'pos.cat.all':           'Todos',
+    'pos.cat.food':          'Alimentos',
+    'pos.cat.drinks':        'Bebidas',
+    'pos.cat.hygiene':       'Higiene',
+    'pos.cat.other':         'Otros',
+    'pos.stock':             'Stock:',
+    'pos.lowStock':          'Bajo',
+    'pos.cart':              'Carrito',
+    'pos.clear':             'Limpiar',
+    'pos.cartEmpty':         'No hay productos agregados',
+    'pos.subtotal':          'Subtotal',
+    'pos.total':             'Total',
+    'pos.balanceAfter':      'Saldo tras venta',
+    'pos.confirmSale':       'Confirmar Venta',
+    'pos.saleComplete':          'Venta registrada',
+    'pos.restricted':            'Cuenta restringida \u2014 ventas bloqueadas',
+    'pos.cartHint':              'Selecciona productos del cat\u00e1logo',
+    'pos.outOfStock':            'Sin stock',
+    'pos.favorites':             'Favoritos:',
+    'pos.acctType':              'Tipo de cuenta',
+    'pos.acctType.standard':     'Est\u00e1ndar',
+    'pos.acctType.savings':      'Ahorro',
+    'pos.acctType.restricted':   'Restringida',
+    'pos.spendingStatus':        'Estado de gasto',
+    'pos.spending.normal':       'Normal',
+    'pos.spending.restricted':   'Restringido',
+    'pos.lastPurchaseDate':      '\u00daltima compra',
+    'pos.status.ready':          'Listo para confirmar',
+    'pos.status.empty':          'Carrito vac\u00edo',
+    'pos.status.blocked':        'Venta bloqueada',
+    'pos.status.restricted':     'Cuenta restringida',
+    'pos.recentActivity':        'Actividad reciente',
+    'pos.receipt.inmate':        'Recluso',
+    'pos.receipt.operator':      'Operador',
+    'pos.receipt.datetime':      'Fecha/Hora',
+    'pos.newSale':               'Nueva Venta',
     'nav.cashdesk':               'Control de Caja',
     'nav.cashdesk.opening':       'Apertura de Caja',
     'nav.cashdesk.closing':       'Cierre de Caja',
@@ -106,6 +153,7 @@ const translations = {
     'status.success':     'Exitoso',
     'status.failed':      'Fallido',
     'status.flagged':     'Marcado',
+    'status.restricted':  'Restringido',
 
     /* Centers */
     'center.laVictoria': 'La Victoria',
@@ -381,6 +429,53 @@ const translations = {
     'nav.inmates.balance':      'Balance Inquiry',
     'nav.inmates.history':      'Transaction History',
     'nav.transactions':           'Transactions',
+    /* POS */
+    'nav.pos':               'Point of Sale',
+    'pos.subtitle':          'Sales terminal for prison commissary',
+    'pos.sessionOpen':       'Session open',
+    'pos.inmate':            'Inmate',
+    'pos.searchInmate':      'Search inmate...',
+    'pos.availableBalance':  'Available balance',
+    'pos.monthlyLimit':      'Monthly limit: RD$ 10,000',
+    'pos.lastPurchase':      'Last purchase',
+    'pos.products':          'Products',
+    'pos.searchProduct':     'Search product...',
+    'pos.cat.all':           'All',
+    'pos.cat.food':          'Food',
+    'pos.cat.drinks':        'Drinks',
+    'pos.cat.hygiene':       'Hygiene',
+    'pos.cat.other':         'Other',
+    'pos.stock':             'Stock:',
+    'pos.lowStock':          'Low',
+    'pos.cart':              'Cart',
+    'pos.clear':             'Clear',
+    'pos.cartEmpty':         'No products added',
+    'pos.subtotal':          'Subtotal',
+    'pos.total':             'Total',
+    'pos.balanceAfter':      'Balance after sale',
+    'pos.confirmSale':       'Confirm Sale',
+    'pos.saleComplete':          'Sale recorded',
+    'pos.restricted':            'Restricted account \u2014 sales blocked',
+    'pos.cartHint':              'Select products from the catalog',
+    'pos.outOfStock':            'Out of stock',
+    'pos.favorites':             'Favorites:',
+    'pos.acctType':              'Account type',
+    'pos.acctType.standard':     'Standard',
+    'pos.acctType.savings':      'Savings',
+    'pos.acctType.restricted':   'Restricted',
+    'pos.spendingStatus':        'Spending status',
+    'pos.spending.normal':       'Normal',
+    'pos.spending.restricted':   'Restricted',
+    'pos.lastPurchaseDate':      'Last purchase',
+    'pos.status.ready':          'Ready to confirm',
+    'pos.status.empty':          'Cart is empty',
+    'pos.status.blocked':        'Sale blocked',
+    'pos.status.restricted':     'Restricted account',
+    'pos.recentActivity':        'Recent activity',
+    'pos.receipt.inmate':        'Inmate',
+    'pos.receipt.operator':      'Operator',
+    'pos.receipt.datetime':      'Date/Time',
+    'pos.newSale':               'New Sale',
     'nav.transactions.deposits':  'Deposits',
     'nav.transactions.withdrawals':'Withdrawals',
     'nav.transactions.reversal':  'Transaction Reversal',
@@ -463,6 +558,7 @@ const translations = {
     'status.success':     'Success',
     'status.failed':      'Failed',
     'status.flagged':     'Flagged',
+    'status.restricted':  'Restricted',
 
     /* Centers */
     'center.laVictoria': 'La Victoria',
@@ -742,6 +838,7 @@ const sectionLabels = {
   'security-access-log':       'nav.security.accessLog',
   'security-audit':            'nav.security.audit',
   'security-roles':            'nav.security.roles',
+  'pos-main':                  'nav.pos',
   'reports':                   'nav.reports',
 };
 
@@ -1044,3 +1141,368 @@ function showToast(actionLabel, type) {
     toast.style.transform = 'translateY(8px)';
   }, 3200);
 }
+
+/* ═══════════════════════════════════════════════════════════
+   POS MODULE — CART LOGIC
+═══════════════════════════════════════════════════════════ */
+var POS_INMATES = [
+  { id:'REC-00234', initials:'CM', name:'Carlos R. M\u00e9ndez',    center:'La Victoria',   acct:'standard',   status:'active',     lastItem:'Arroz Diana 5lb',      lastAmt:285, lastDate:'26/03/2026', balance:2350, restricted:false },
+  { id:'REC-00891', initials:'AP', name:'Ana L. P\u00e9rez',        center:'Najayo',         acct:'savings',    status:'active',     lastItem:'Pasta dental',          lastAmt:80,  lastDate:'24/03/2026', balance:6200, restricted:false },
+  { id:'REC-00312', initials:'PG', name:'Pedro A. Guzm\u00e1n',     center:'La Victoria',   acct:'standard',   status:'active',     lastItem:'Pan de agua',           lastAmt:50,  lastDate:'25/03/2026', balance:4750, restricted:false },
+  { id:'REC-01147', initials:'JS', name:'Jos\u00e9 M. Santos Cruz', center:'Rafey Hombres', acct:'restricted', status:'restricted', lastItem:'Agua Bonafont 1L',      lastAmt:35,  lastDate:'20/03/2026', balance:820,  restricted:true  },
+  { id:'REC-00456', initials:'MT', name:'Mar\u00eda T. Salcedo',    center:'Najayo',         acct:'standard',   status:'active',     lastItem:'Jab\u00f3n Palmolive', lastAmt:60,  lastDate:'23/03/2026', balance:1100, restricted:false }
+];
+var POS_CURRENT_INMATE = POS_INMATES[0];
+var POS_RECEIPT_N      = 1;
+
+/* ── Inmate selector ── */
+function posToggleDropdown() {
+  var dd = document.getElementById('posInmateDropdown');
+  if (!dd) return;
+  dd.style.display = (dd.style.display === 'none' || !dd.style.display) ? 'block' : 'none';
+}
+function posOpenDropdown()  { var d = document.getElementById('posInmateDropdown'); if (d) d.style.display = 'block'; }
+function posCloseDropdown() { var d = document.getElementById('posInmateDropdown'); if (d) d.style.display = 'none';  }
+
+function posSelectInmate(id) {
+  var inmate = null;
+  for (var i = 0; i < POS_INMATES.length; i++) { if (POS_INMATES[i].id === id) { inmate = POS_INMATES[i]; break; } }
+  if (!inmate) return;
+  POS_CURRENT_INMATE = inmate;
+  posCloseDropdown();
+  posClearCart();
+  posRenderInmate(inmate);
+}
+
+function posRenderInmate(inmate) {
+  /* Dropdown label */
+  var lbl = document.getElementById('posDropdownLabel');
+  if (lbl) lbl.textContent = inmate.id + ' \u2014 ' + inmate.name;
+
+  /* Avatar & name */
+  var avatar = document.getElementById('posInmateAvatar');
+  var nameEl = document.getElementById('posInmateName');
+  var meta   = document.getElementById('posInmateMeta');
+  if (avatar) avatar.textContent = inmate.initials;
+  if (nameEl) nameEl.textContent = inmate.name;
+  if (meta)   meta.innerHTML     = inmate.id + ' &bull; ' + inmate.center;
+
+  /* Status badge */
+  var badge = document.getElementById('posInmateStatusBadge');
+  if (badge) {
+    badge.textContent = t(inmate.restricted ? 'status.restricted' : 'status.active');
+    badge.className   = inmate.restricted ? 'badge badge-warning' : 'badge badge-deposit';
+  }
+
+  /* Detail row */
+  var acctEl  = document.getElementById('posAcctType');
+  var spendEl = document.getElementById('posSpendingStatus');
+  var dateEl  = document.getElementById('posLastPurchaseDate');
+  if (acctEl)  acctEl.textContent  = t('pos.acctType.' + inmate.acct) || inmate.acct;
+  if (spendEl) spendEl.textContent = t(inmate.restricted ? 'pos.spending.restricted' : 'pos.spending.normal');
+  if (dateEl)  dateEl.textContent  = inmate.lastDate;
+
+  /* Balance with pulse */
+  var balEl = document.getElementById('posBalanceDisplay');
+  if (balEl) {
+    balEl.textContent = 'RD$ ' + inmate.balance.toLocaleString('es-DO', {minimumFractionDigits: 2});
+    var box = balEl.closest('.pos-balance-box');
+    if (box) {
+      box.classList.remove('pos-pulse');
+      void box.offsetWidth;
+      box.classList.add('pos-pulse');
+      setTimeout(function () { box.classList.remove('pos-pulse'); }, 400);
+    }
+  }
+
+  /* Last purchase */
+  var lastItem = document.getElementById('posLastItem');
+  var lastAmt  = document.getElementById('posLastAmt');
+  var lastDate = document.getElementById('posLastDate');
+  if (lastItem) lastItem.textContent = inmate.lastItem;
+  if (lastAmt)  lastAmt.textContent  = 'RD$ ' + inmate.lastAmt;
+  if (lastDate) lastDate.textContent = inmate.lastDate;
+
+  /* Restricted banner */
+  var banner = document.getElementById('posRestrictBanner');
+  if (banner) banner.style.display = inmate.restricted ? 'flex' : 'none';
+
+  posUpdateTotals();
+}
+
+/* ── Cart logic ── */
+function posGetItems() {
+  return document.querySelectorAll('#posCartItems .pos-cart-item');
+}
+
+function posCalcTotal() {
+  var total = 0;
+  posGetItems().forEach(function (item) {
+    total += (parseFloat(item.dataset.price) || 0) * (parseInt(item.dataset.qty, 10) || 0);
+  });
+  return total;
+}
+
+function posUpdateCartStatus(total, after) {
+  var statusEl   = document.getElementById('posCartStatus');
+  var statusTxt  = document.getElementById('posCartStatusText');
+  var confirmBtn = document.getElementById('posConfirmBtn');
+  if (!statusEl) return;
+
+  var state = 'ready';
+  if (POS_CURRENT_INMATE.restricted)   state = 'blocked';
+  else if (posGetItems().length === 0) state = 'empty';
+  else if (after < 0)                  state = 'blocked';
+
+  statusEl.className = 'pos-cart-status pos-status-' + state;
+  var iconEl = statusEl.querySelector('.pos-status-icon');
+  if (iconEl) iconEl.innerHTML = state === 'ready' ? '&#10003;' : state === 'empty' ? '&#128722;' : '&#9888;';
+  if (statusTxt) statusTxt.textContent = t('pos.status.' + state);
+
+  if (confirmBtn) {
+    confirmBtn.disabled = (state !== 'ready');
+    if (state !== 'ready') confirmBtn.classList.add('pos-btn-disabled');
+    else                   confirmBtn.classList.remove('pos-btn-disabled');
+  }
+}
+
+function posUpdateTotals() {
+  var total    = posCalcTotal();
+  var after    = POS_CURRENT_INMATE.balance - total;
+  var fmtTotal = 'RD$ ' + total.toLocaleString('es-DO', {minimumFractionDigits: 0});
+  var fmtAfter = 'RD$ ' + after.toLocaleString('es-DO', {minimumFractionDigits: 2});
+
+  var elSub   = document.getElementById('posSubtotal');
+  var elTotal = document.getElementById('posTotal');
+  var elAfter = document.getElementById('posBalanceAfter');
+  if (elSub)   elSub.textContent   = fmtTotal;
+  if (elTotal) elTotal.textContent = fmtTotal;
+  if (elAfter) {
+    elAfter.textContent = fmtAfter;
+    elAfter.style.color = after < 0 ? 'var(--clr-red)' : 'var(--clr-green)';
+  }
+
+  var hasItems = posGetItems().length > 0;
+  var emptyEl  = document.getElementById('posCartEmpty');
+  if (emptyEl) emptyEl.style.display = hasItems ? 'none' : 'flex';
+
+  posUpdateCartStatus(total, after);
+}
+
+function posAddItem(card, name, priceStr) {
+  if (card && card.dataset && card.dataset.out) return;
+  if (POS_CURRENT_INMATE.restricted) { posShakeBtn(); return; }
+
+  var price    = parseFloat(priceStr);
+  var existing = null;
+  posGetItems().forEach(function (item) { if (item.dataset.name === name) existing = item; });
+
+  if (existing) {
+    var newQty = parseInt(existing.dataset.qty, 10) + 1;
+    existing.dataset.qty = newQty;
+    existing.querySelector('.pos-qty-val').textContent     = newQty;
+    existing.querySelector('.pos-ci-subtotal').textContent = 'RD$ ' + (price * newQty).toLocaleString('es-DO');
+  } else {
+    var container = document.getElementById('posCartItems');
+    if (!container) return;
+    var row = document.createElement('div');
+    row.className     = 'pos-cart-item pos-added';
+    row.dataset.name  = name;
+    row.dataset.price = price;
+    row.dataset.qty   = 1;
+    row.innerHTML =
+      '<div class="pos-ci-info">' +
+        '<span class="pos-ci-name">' + name + '</span>' +
+        '<span class="pos-ci-price mono">RD$ ' + price + ' c/u</span>' +
+      '</div>' +
+      '<div class="pos-ci-controls">' +
+        '<button class="pos-qty-btn" onclick="posChangeQty(this,-1)">&#8722;</button>' +
+        '<span class="pos-qty-val">1</span>' +
+        '<button class="pos-qty-btn" onclick="posChangeQty(this,1)">+</button>' +
+        '<button class="pos-remove-btn" onclick="posRemoveItem(this)">&#215;</button>' +
+      '</div>' +
+      '<div class="pos-ci-subtotal mono">RD$ ' + price + '</div>';
+    container.appendChild(row);
+  }
+
+  if (card && card.classList) {
+    card.classList.add('pos-flash');
+    setTimeout(function () { card.classList.remove('pos-flash'); }, 500);
+  }
+  posUpdateTotals();
+}
+
+function posFavAdd(name, price) {
+  var found = null;
+  document.querySelectorAll('.pos-product-card').forEach(function (card) {
+    var n = card.querySelector('.pos-prod-name');
+    if (n && n.textContent === name) found = card;
+  });
+  posAddItem(found || {classList:{add:function(){},remove:function(){}}}, name, String(price));
+}
+
+function posShakeBtn() {
+  var btn = document.getElementById('posConfirmBtn');
+  if (!btn) return;
+  btn.classList.add('pos-shake');
+  setTimeout(function () { btn.classList.remove('pos-shake'); }, 350);
+}
+
+function posPulseBalance() {
+  var el = document.getElementById('posBalanceDisplay');
+  if (!el) return;
+  var box = el.closest('.pos-balance-box');
+  if (!box) return;
+  box.classList.remove('pos-pulse');
+  void box.offsetWidth;
+  box.classList.add('pos-pulse');
+  setTimeout(function () { box.classList.remove('pos-pulse'); }, 400);
+}
+
+function posChangeQty(btn, delta) {
+  var item  = btn.closest('.pos-cart-item');
+  var price = parseFloat(item.dataset.price);
+  var qty   = parseInt(item.dataset.qty, 10) + delta;
+  if (qty < 1) { posRemoveItem(btn); return; }
+  item.dataset.qty = qty;
+  item.querySelector('.pos-qty-val').textContent     = qty;
+  item.querySelector('.pos-ci-subtotal').textContent = 'RD$ ' + (price * qty).toLocaleString('es-DO');
+  posUpdateTotals();
+}
+
+function posRemoveItem(btn) {
+  var item = btn.closest('.pos-cart-item');
+  item.style.opacity    = '0';
+  item.style.transform  = 'translateX(12px)';
+  item.style.transition = 'opacity 180ms, transform 180ms';
+  setTimeout(function () { item.remove(); posUpdateTotals(); }, 180);
+}
+
+function posClearCart() {
+  document.querySelectorAll('#posCartItems .pos-cart-item').forEach(function (i) { i.remove(); });
+  var rf = document.getElementById('posReceiptFull');
+  if (rf) rf.style.display = 'none';
+  posUpdateTotals();
+}
+
+function posConfirmSale() {
+  var confirmBtn = document.getElementById('posConfirmBtn');
+  if (confirmBtn && confirmBtn.disabled) return;
+  var total = posCalcTotal();
+  if (total === 0) { showToast(t('pos.cartEmpty'), 'warning'); return; }
+  if (POS_CURRENT_INMATE.restricted) { showToast(t('pos.restricted'), 'warning'); posShakeBtn(); return; }
+
+  /* Collect items */
+  var lines = [];
+  posGetItems().forEach(function (item) {
+    lines.push({ name: item.dataset.name, qty: parseInt(item.dataset.qty, 10), price: parseFloat(item.dataset.price) });
+  });
+
+  /* Update inmate balance */
+  POS_CURRENT_INMATE.balance -= total;
+  var after = POS_CURRENT_INMATE.balance;
+
+  /* Ref & timestamp */
+  var ref = '#POS-' + String(POS_RECEIPT_N++).padStart(4, '0');
+  var now = new Date();
+  var dateStr = ('0' + now.getDate()).slice(-2) + '/' +
+                ('0' + (now.getMonth() + 1)).slice(-2) + '/' +
+                now.getFullYear() + ' ' +
+                ('0' + now.getHours()).slice(-2) + ':' +
+                ('0' + now.getMinutes()).slice(-2);
+
+  /* Render full receipt */
+  var rf = document.getElementById('posReceiptFull');
+  if (rf) {
+    document.getElementById('posRfRef').textContent      = ref;
+    document.getElementById('posRfInmate').textContent   = POS_CURRENT_INMATE.name;
+    document.getElementById('posRfDatetime').textContent = dateStr;
+    document.getElementById('posRfItems').innerHTML      = lines.map(function (l) {
+      return '<div class="pos-rf-row"><span>' + l.name + ' &times;' + l.qty + '</span>' +
+             '<span class="mono">RD$ ' + (l.price * l.qty).toLocaleString('es-DO') + '</span></div>';
+    }).join('');
+    document.getElementById('posRfTotal').textContent   = 'RD$ ' + total.toLocaleString('es-DO');
+    document.getElementById('posRfBalance').textContent = 'RD$ ' + after.toLocaleString('es-DO', {minimumFractionDigits: 2});
+    rf.style.display = 'block';
+    rf.classList.remove('pos-bounce-in');
+    void rf.offsetWidth;
+    rf.classList.add('pos-bounce-in');
+    setTimeout(function () { rf.classList.remove('pos-bounce-in'); }, 300);
+  }
+
+  /* Update balance display */
+  var balEl = document.getElementById('posBalanceDisplay');
+  if (balEl) {
+    balEl.textContent = 'RD$ ' + after.toLocaleString('es-DO', {minimumFractionDigits: 2});
+    posPulseBalance();
+  }
+
+  /* Add to recent activity feed */
+  posAddToRecent(POS_CURRENT_INMATE.name, total, ref);
+
+  /* Clear cart items without hiding receipt */
+  document.querySelectorAll('#posCartItems .pos-cart-item').forEach(function (i) { i.remove(); });
+  posUpdateTotals();
+
+  showToast(t('pos.saleComplete') + ' ' + ref, 'success');
+}
+
+function posDismissReceipt() {
+  var rf = document.getElementById('posReceiptFull');
+  if (rf) rf.style.display = 'none';
+}
+
+function posAddToRecent(name, total, ref) {
+  var list = document.getElementById('posRecentList');
+  if (!list) return;
+  var now = new Date();
+  var timeStr = ('0' + now.getHours()).slice(-2) + ':' + ('0' + now.getMinutes()).slice(-2);
+  var item = document.createElement('div');
+  item.className = 'pos-recent-item pos-bounce-in';
+  item.innerHTML =
+    '<div class="pos-ri-icon">&#128179;</div>' +
+    '<div class="pos-ri-info">' +
+      '<span class="pos-ri-name">' + name + '</span>' +
+      '<span class="pos-ri-detail mono">RD$ ' + total.toLocaleString('es-DO') + ' &bull; ' + ref + '</span>' +
+    '</div>' +
+    '<span class="pos-ri-time muted">' + timeStr + '</span>';
+  list.insertBefore(item, list.firstChild);
+  while (list.children.length > 5) list.removeChild(list.lastChild);
+}
+
+/* ── Event listeners ── */
+document.addEventListener('DOMContentLoaded', function () {
+
+  /* Close dropdown on outside click */
+  document.addEventListener('click', function (e) {
+    if (!e.target.closest('#posDropdown') && !e.target.closest('.pos-search-field-wrap')) {
+      posCloseDropdown();
+    }
+
+    /* Category filter */
+    var catBtn = e.target.closest('.pos-cat-btn');
+    if (catBtn) {
+      catBtn.closest('.pos-categories').querySelectorAll('.pos-cat-btn').forEach(function (b) {
+        b.classList.remove('active');
+      });
+      catBtn.classList.add('active');
+      var cat = catBtn.dataset.cat;
+      document.querySelectorAll('.pos-product-card').forEach(function (card) {
+        card.classList.toggle('filtered-out', cat !== 'all' && card.dataset.cat !== cat);
+      });
+    }
+  });
+
+  /* Live product search */
+  document.addEventListener('input', function (e) {
+    if (!e.target.classList.contains('pos-product-search')) return;
+    var q = e.target.value.toLowerCase().trim();
+    document.querySelectorAll('.pos-product-card').forEach(function (card) {
+      var name = card.querySelector('.pos-prod-name').textContent.toLowerCase();
+      card.classList.toggle('filtered-out', q !== '' && !name.includes(q));
+    });
+  });
+
+  /* Init POS */
+  posRenderInmate(POS_CURRENT_INMATE);
+});

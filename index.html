@@ -67,6 +67,11 @@
         </div>
       </div>
 
+      <a class="nav-item" href="#" data-section="pos-main">
+        <span class="nav-icon">&#128179;</span>
+        <span class="nav-label" data-i18n="nav.pos">Punto de Venta</span>
+      </a>
+
       <div class="nav-group">
         <button class="nav-group-toggle" data-group="cashdesk">
           <span class="nav-icon">&#128176;</span>
@@ -744,6 +749,373 @@
             </table>
           </div>
         </div>
+      </section>
+
+      <!-- ══════════════════ POINT OF SALE ══════════════════ -->
+      <section class="page-section" id="section-pos-main">
+        <div class="page-header">
+          <div>
+            <h1 data-i18n="nav.pos">Punto de Venta</h1>
+            <p class="page-subtitle" data-i18n="pos.subtitle">Terminal de ventas para economato penitenciario</p>
+          </div>
+          <div class="pos-session-info">
+            <span class="date-chip">&#128197; <span id="posSessionDate">31/03/2026</span></span>
+            <span class="pos-session-badge"><span class="dot green"></span><span data-i18n="pos.sessionOpen">Sesi&#243;n abierta</span></span>
+          </div>
+        </div>
+
+        <div class="pos-layout">
+
+          <!-- ── LEFT: Inmate panel ── -->
+          <div class="pos-left">
+            <div class="pos-panel">
+              <div class="pos-panel-header">
+                <span class="pos-panel-title" data-i18n="pos.inmate">Recluso</span>
+              </div>
+
+              <!-- Inmate search dropdown -->
+              <div class="pos-search-wrap pos-search-field-wrap" style="padding:12px 16px 8px">
+                <div class="pos-dropdown-wrap" id="posDropdown">
+                  <button class="fc pos-dropdown-trigger" onclick="posToggleDropdown()" id="posDropdownTrigger">
+                    <span id="posDropdownLabel">REC-00234 &#8212; Carlos R. M&#233;ndez</span>
+                    <span class="pos-dropdown-arrow">&#9660;</span>
+                  </button>
+                  <div class="pos-inmate-dropdown" id="posInmateDropdown" style="display:none">
+                    <div class="pos-dropdown-item" data-id="REC-00234" onclick="posSelectInmate('REC-00234')">
+                      <span class="pos-di-id mono">REC-00234</span>
+                      <span class="pos-di-name">Carlos R. M&#233;ndez</span>
+                      <span class="pos-di-center muted">La Victoria</span>
+                    </div>
+                    <div class="pos-dropdown-item" data-id="REC-00891" onclick="posSelectInmate('REC-00891')">
+                      <span class="pos-di-id mono">REC-00891</span>
+                      <span class="pos-di-name">Ana L. P&#233;rez</span>
+                      <span class="pos-di-center muted">Najayo</span>
+                    </div>
+                    <div class="pos-dropdown-item" data-id="REC-00312" onclick="posSelectInmate('REC-00312')">
+                      <span class="pos-di-id mono">REC-00312</span>
+                      <span class="pos-di-name">Pedro A. Guzm&#225;n</span>
+                      <span class="pos-di-center muted">La Victoria</span>
+                    </div>
+                    <div class="pos-dropdown-item pos-dropdown-item--restricted" data-id="REC-01147" onclick="posSelectInmate('REC-01147')">
+                      <span class="pos-di-id mono">REC-01147</span>
+                      <span class="pos-di-name">Jos&#233; M. Santos Cruz</span>
+                      <span class="pos-di-center muted">Rafey Hombres</span>
+                      <span class="pos-di-badge">&#9888;</span>
+                    </div>
+                    <div class="pos-dropdown-item" data-id="REC-00456" onclick="posSelectInmate('REC-00456')">
+                      <span class="pos-di-id mono">REC-00456</span>
+                      <span class="pos-di-name">Mar&#237;a T. Salcedo</span>
+                      <span class="pos-di-center muted">Najayo</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Restricted warning banner -->
+              <div class="pos-restrict-banner" id="posRestrictBanner" style="display:none">
+                <span>&#9888;</span>
+                <span data-i18n="pos.restricted">Cuenta restringida &#8212; ventas bloqueadas</span>
+              </div>
+
+              <!-- Inmate profile -->
+              <div class="pos-inmate-card" id="posInmateCard">
+                <div class="pos-inmate-avatar" id="posInmateAvatar">CM</div>
+                <div class="pos-inmate-info">
+                  <div class="pos-inmate-name" id="posInmateName">Carlos R. M&#233;ndez</div>
+                  <div class="pos-inmate-meta mono" id="posInmateMeta">REC-00234 &bull; La Victoria</div>
+                  <span class="badge badge-deposit" id="posInmateStatusBadge" data-i18n="status.active">Activo</span>
+                </div>
+              </div>
+
+              <!-- Secondary detail row -->
+              <div class="pos-inmate-details" id="posInmateDetails">
+                <div class="pos-detail-item">
+                  <span class="pos-detail-lbl" data-i18n="pos.acctType">Tipo de cuenta</span>
+                  <span class="pos-detail-val" id="posAcctType">Est&#225;ndar</span>
+                </div>
+                <div class="pos-detail-item">
+                  <span class="pos-detail-lbl" data-i18n="pos.spendingStatus">Estado de gasto</span>
+                  <span class="pos-detail-val" id="posSpendingStatus" data-i18n="pos.spending.normal">Normal</span>
+                </div>
+                <div class="pos-detail-item">
+                  <span class="pos-detail-lbl" data-i18n="pos.lastPurchaseDate">&#218;ltima compra</span>
+                  <span class="pos-detail-val mono" id="posLastPurchaseDate">26/03/2026</span>
+                </div>
+              </div>
+
+              <!-- Balance -->
+              <div class="pos-balance-box">
+                <div class="pos-balance-label" data-i18n="pos.availableBalance">Saldo disponible</div>
+                <div class="pos-balance-value" id="posBalanceDisplay">RD$ 2,350.00</div>
+                <div class="pos-balance-sub" data-i18n="pos.monthlyLimit">L&#237;mite mensual: RD$ 10,000</div>
+              </div>
+
+              <!-- Last purchase -->
+              <div class="pos-last-purchase">
+                <div class="pos-lp-label" data-i18n="pos.lastPurchase">&#218;ltima compra</div>
+                <div class="pos-lp-row"><span id="posLastItem">Arroz Diana 5lb</span><span class="mono" id="posLastAmt">RD$ 285</span></div>
+                <div class="pos-lp-date mono muted" id="posLastDate">26/03/2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── CENTER: Products ── -->
+          <div class="pos-center">
+            <div class="pos-panel">
+              <div class="pos-panel-header">
+                <span class="pos-panel-title" data-i18n="pos.products">Productos</span>
+                <input type="text" class="fc pos-product-search" id="posProductSearch"
+                       data-i18n-placeholder="pos.searchProduct" placeholder="Buscar producto...">
+              </div>
+
+              <!-- Quick favorites bar -->
+              <div class="pos-favorites-row">
+                <span class="pos-fav-label" data-i18n="pos.favorites">Favoritos:</span>
+                <button class="pos-fav-btn" onclick="posFavAdd('Arroz Diana 5lb','285')">&#9733; Arroz</button>
+                <button class="pos-fav-btn" onclick="posFavAdd('Coca-Cola 355ml','75')">&#9733; Coca-Cola</button>
+                <button class="pos-fav-btn" onclick="posFavAdd('Pan de agua','50')">&#9733; Pan</button>
+              </div>
+
+              <!-- Category filters -->
+              <div class="pos-categories">
+                <button class="pos-cat-btn active" data-cat="all" data-i18n="pos.cat.all">Todos</button>
+                <button class="pos-cat-btn" data-cat="food" data-i18n="pos.cat.food">Alimentos</button>
+                <button class="pos-cat-btn" data-cat="drinks" data-i18n="pos.cat.drinks">Bebidas</button>
+                <button class="pos-cat-btn" data-cat="hygiene" data-i18n="pos.cat.hygiene">Higiene</button>
+                <button class="pos-cat-btn" data-cat="other" data-i18n="pos.cat.other">Otros</button>
+              </div>
+
+              <!-- Product grid -->
+              <div class="pos-product-grid">
+                <!-- Food -->
+                <div class="pos-product-card" data-cat="food" onclick="posAddItem(this,'Arroz Diana 5lb','285')">
+                  <div class="pos-prod-icon">&#127859;</div>
+                  <div class="pos-prod-name">Arroz Diana 5lb</div>
+                  <div class="pos-prod-price">RD$ 285</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 42</div>
+                </div>
+                <div class="pos-product-card" data-cat="food" onclick="posAddItem(this,'Pan de agua','50')">
+                  <div class="pos-prod-icon">&#127838;</div>
+                  <div class="pos-prod-name">Pan de agua</div>
+                  <div class="pos-prod-price">RD$ 50</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 120</div>
+                </div>
+                <div class="pos-product-card" data-cat="food" onclick="posAddItem(this,'Sardinas en lata','95')">
+                  <div class="pos-prod-icon">&#127993;</div>
+                  <div class="pos-prod-name">Sardinas en lata</div>
+                  <div class="pos-prod-price">RD$ 95</div>
+                  <div class="pos-prod-stock pos-low-stock"><span data-i18n="pos.stock">Stock:</span> 4 &nbsp;<span class="pos-low-badge" data-i18n="pos.lowStock">Bajo</span></div>
+                </div>
+                <div class="pos-product-card" data-cat="food" onclick="posAddItem(this,'Espagueti 1lb','75')">
+                  <div class="pos-prod-icon">&#127837;</div>
+                  <div class="pos-prod-name">Espagueti 1lb</div>
+                  <div class="pos-prod-price">RD$ 75</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 30</div>
+                </div>
+                <div class="pos-product-card pos-out-of-stock" data-cat="food" data-out="1">
+                  <div class="pos-prod-icon">&#127862;</div>
+                  <div class="pos-prod-name">Leche Entera 1L</div>
+                  <div class="pos-prod-price">RD$ 110</div>
+                  <div class="pos-prod-stock"><span class="pos-out-stock-label" data-i18n="pos.outOfStock">Sin stock</span></div>
+                </div>
+                <!-- Drinks -->
+                <div class="pos-product-card" data-cat="drinks" onclick="posAddItem(this,'Coca-Cola 355ml','75')">
+                  <div class="pos-prod-icon">&#127863;</div>
+                  <div class="pos-prod-name">Coca-Cola 355ml</div>
+                  <div class="pos-prod-price">RD$ 75</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 36</div>
+                </div>
+                <div class="pos-product-card" data-cat="drinks" onclick="posAddItem(this,'Agua Bonafont 1L','35')">
+                  <div class="pos-prod-icon">&#128167;</div>
+                  <div class="pos-prod-name">Agua Bonafont 1L</div>
+                  <div class="pos-prod-price">RD$ 35</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 88</div>
+                </div>
+                <div class="pos-product-card" data-cat="drinks" onclick="posAddItem(this,'Jugo Natura 250ml','55')">
+                  <div class="pos-prod-icon">&#127818;</div>
+                  <div class="pos-prod-name">Jugo Natura 250ml</div>
+                  <div class="pos-prod-price">RD$ 55</div>
+                  <div class="pos-prod-stock pos-low-stock"><span data-i18n="pos.stock">Stock:</span> 5 &nbsp;<span class="pos-low-badge" data-i18n="pos.lowStock">Bajo</span></div>
+                </div>
+                <!-- Hygiene -->
+                <div class="pos-product-card" data-cat="hygiene" onclick="posAddItem(this,'Jab&#243;n Palmolive','60')">
+                  <div class="pos-prod-icon">&#129470;</div>
+                  <div class="pos-prod-name">Jab&#243;n Palmolive</div>
+                  <div class="pos-prod-price">RD$ 60</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 22</div>
+                </div>
+                <div class="pos-product-card" data-cat="hygiene" onclick="posAddItem(this,'Pasta dental','80')">
+                  <div class="pos-prod-icon">&#129366;</div>
+                  <div class="pos-prod-name">Pasta dental</div>
+                  <div class="pos-prod-price">RD$ 80</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 18</div>
+                </div>
+                <div class="pos-product-card pos-out-of-stock" data-cat="hygiene" data-out="1">
+                  <div class="pos-prod-icon">&#129529;</div>
+                  <div class="pos-prod-name">Desodorante Rexona</div>
+                  <div class="pos-prod-price">RD$ 145</div>
+                  <div class="pos-prod-stock"><span class="pos-out-stock-label" data-i18n="pos.outOfStock">Sin stock</span></div>
+                </div>
+                <!-- Other -->
+                <div class="pos-product-card" data-cat="other" onclick="posAddItem(this,'Cuaderno 50h','120')">
+                  <div class="pos-prod-icon">&#128214;</div>
+                  <div class="pos-prod-name">Cuaderno 50h</div>
+                  <div class="pos-prod-price">RD$ 120</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 15</div>
+                </div>
+                <div class="pos-product-card" data-cat="other" onclick="posAddItem(this,'Bol&#237;grafo BIC','25')">
+                  <div class="pos-prod-icon">&#9999;</div>
+                  <div class="pos-prod-name">Bol&#237;grafo BIC</div>
+                  <div class="pos-prod-price">RD$ 25</div>
+                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 60</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── RIGHT: Cart + Receipt + Recent ── -->
+          <div class="pos-right">
+            <div class="pos-panel pos-cart-panel">
+              <div class="pos-panel-header">
+                <span class="pos-panel-title" data-i18n="pos.cart">Carrito</span>
+                <button class="pos-clear-btn" onclick="posClearCart()" data-i18n="pos.clear">Limpiar</button>
+              </div>
+
+              <!-- Cart items list -->
+              <div class="pos-cart-items" id="posCartItems">
+                <div class="pos-cart-item" data-name="Coca-Cola 355ml" data-price="75" data-qty="2">
+                  <div class="pos-ci-info">
+                    <span class="pos-ci-name">Coca-Cola 355ml</span>
+                    <span class="pos-ci-price mono">RD$ 75 c/u</span>
+                  </div>
+                  <div class="pos-ci-controls">
+                    <button class="pos-qty-btn" onclick="posChangeQty(this,-1)">&#8722;</button>
+                    <span class="pos-qty-val">2</span>
+                    <button class="pos-qty-btn" onclick="posChangeQty(this,1)">&#43;</button>
+                    <button class="pos-remove-btn" onclick="posRemoveItem(this)">&#215;</button>
+                  </div>
+                  <div class="pos-ci-subtotal mono">RD$ 150</div>
+                </div>
+                <div class="pos-cart-item" data-name="Pan de agua" data-price="50" data-qty="1">
+                  <div class="pos-ci-info">
+                    <span class="pos-ci-name">Pan de agua</span>
+                    <span class="pos-ci-price mono">RD$ 50 c/u</span>
+                  </div>
+                  <div class="pos-ci-controls">
+                    <button class="pos-qty-btn" onclick="posChangeQty(this,-1)">&#8722;</button>
+                    <span class="pos-qty-val">1</span>
+                    <button class="pos-qty-btn" onclick="posChangeQty(this,1)">&#43;</button>
+                    <button class="pos-remove-btn" onclick="posRemoveItem(this)">&#215;</button>
+                  </div>
+                  <div class="pos-ci-subtotal mono">RD$ 50</div>
+                </div>
+              </div>
+
+              <!-- Empty state -->
+              <div class="pos-cart-empty" id="posCartEmpty" style="display:none">
+                <div class="pos-empty-icon">&#128722;</div>
+                <div data-i18n="pos.cartEmpty">No hay productos agregados</div>
+                <div class="pos-cart-hint" data-i18n="pos.cartHint">Selecciona productos del cat&#225;logo</div>
+              </div>
+
+              <!-- Totals -->
+              <div class="pos-cart-totals">
+                <div class="pos-total-row">
+                  <span data-i18n="pos.subtotal">Subtotal</span>
+                  <span class="mono" id="posSubtotal">RD$ 200</span>
+                </div>
+                <div class="pos-total-row pos-total-main">
+                  <span data-i18n="pos.total">Total</span>
+                  <span class="mono pos-total-value" id="posTotal">RD$ 200</span>
+                </div>
+                <div class="pos-balance-check">
+                  <span data-i18n="pos.balanceAfter">Saldo tras venta</span>
+                  <span class="mono" id="posBalanceAfter">RD$ 2,150.00</span>
+                </div>
+              </div>
+
+              <!-- Cart status box -->
+              <div class="pos-cart-status pos-status-ready" id="posCartStatus">
+                <span class="pos-status-icon">&#10003;</span>
+                <span class="pos-status-text" id="posCartStatusText" data-i18n="pos.status.ready">Listo para confirmar</span>
+              </div>
+
+              <!-- Actions -->
+              <div class="pos-cart-actions">
+                <button class="btn btn-ghost" style="flex:1" onclick="posClearCart()" data-i18n="btn.cancel">Cancelar</button>
+                <button class="btn btn-primary pos-confirm-btn" id="posConfirmBtn" style="flex:2"
+                        onclick="posConfirmSale()" data-i18n="pos.confirmSale">Confirmar Venta</button>
+              </div>
+            </div>
+
+            <!-- Full Receipt (shown after confirm) -->
+            <div class="pos-receipt-full" id="posReceiptFull" style="display:none">
+              <div class="pos-rf-header">
+                <span class="pos-rf-check">&#10003;</span>
+                <div>
+                  <div class="pos-rf-title" data-i18n="pos.saleComplete">Venta registrada</div>
+                  <div class="pos-rf-ref mono" id="posRfRef">#POS-0001</div>
+                </div>
+              </div>
+              <div class="pos-rf-row">
+                <span data-i18n="pos.receipt.inmate">Recluso</span>
+                <span id="posRfInmate">Carlos R. M&#233;ndez</span>
+              </div>
+              <div class="pos-rf-row">
+                <span data-i18n="pos.receipt.operator">Operador</span>
+                <span id="posRfOperator">Op. Marte</span>
+              </div>
+              <div class="pos-rf-row">
+                <span data-i18n="pos.receipt.datetime">Fecha/Hora</span>
+                <span class="mono" id="posRfDatetime">31/03/2026 09:45</span>
+              </div>
+              <div class="pos-rf-divider"></div>
+              <div class="pos-rf-items" id="posRfItems"></div>
+              <div class="pos-rf-divider"></div>
+              <div class="pos-rf-row pos-rf-total-row">
+                <span data-i18n="pos.total">Total</span>
+                <span class="mono" id="posRfTotal">RD$ 200</span>
+              </div>
+              <div class="pos-rf-row pos-rf-balance">
+                <span data-i18n="pos.balanceAfter">Saldo tras venta</span>
+                <span class="mono" id="posRfBalance">RD$ 2,150.00</span>
+              </div>
+              <button class="btn btn-ghost pos-rf-close" onclick="posDismissReceipt()" data-i18n="pos.newSale">Nueva Venta</button>
+            </div>
+
+            <!-- Recent POS Activity -->
+            <div class="pos-recent-panel">
+              <div class="pos-recent-title" data-i18n="pos.recentActivity">Actividad reciente</div>
+              <div id="posRecentList">
+                <div class="pos-recent-item pos-bounce-in">
+                  <div class="pos-ri-icon">&#128179;</div>
+                  <div class="pos-ri-info">
+                    <span class="pos-ri-name">Pedro A. Guzm&#225;n</span>
+                    <span class="pos-ri-detail mono">RD$ 330 &bull; #POS-0031</span>
+                  </div>
+                  <span class="pos-ri-time muted">09:12</span>
+                </div>
+                <div class="pos-recent-item">
+                  <div class="pos-ri-icon">&#128179;</div>
+                  <div class="pos-ri-info">
+                    <span class="pos-ri-name">Ana L. P&#233;rez</span>
+                    <span class="pos-ri-detail mono">RD$ 80 &bull; #POS-0030</span>
+                  </div>
+                  <span class="pos-ri-time muted">08:55</span>
+                </div>
+                <div class="pos-recent-item">
+                  <div class="pos-ri-icon">&#128179;</div>
+                  <div class="pos-ri-info">
+                    <span class="pos-ri-name">Carlos R. M&#233;ndez</span>
+                    <span class="pos-ri-detail mono">RD$ 285 &bull; #POS-0029</span>
+                  </div>
+                  <span class="pos-ri-time muted">08:30</span>
+                </div>
+              </div>
+            </div>
+          </div><!-- /.pos-right -->
+
+        </div><!-- /.pos-layout -->
       </section>
 
       <!-- ══════════════════ CASHDESK OPENING ══════════════════ -->
