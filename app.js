@@ -67,9 +67,13 @@ const translations = {
     'pos.spending.restricted':   'Restringido',
     'pos.lastPurchaseDate':      '\u00daltima compra',
     'pos.status.ready':          'Listo para confirmar',
+    'pos.status.readySub':       'Transacci\u00f3n v\u00e1lida',
     'pos.status.empty':          'Carrito vac\u00edo',
+    'pos.status.emptySub':       'Agrega productos para continuar',
     'pos.status.blocked':        'Venta bloqueada',
+    'pos.status.blockedSub':     'Saldo insuficiente o cuenta restringida',
     'pos.status.restricted':     'Cuenta restringida',
+    'pos.status.restrictedSub':  'Esta cuenta no permite ventas',
     'pos.recentActivity':        'Actividad reciente',
     'pos.receipt.inmate':        'Recluso',
     'pos.receipt.operator':      'Operador',
@@ -568,9 +572,13 @@ const translations = {
     'pos.spending.restricted':   'Restricted',
     'pos.lastPurchaseDate':      'Last purchase',
     'pos.status.ready':          'Ready to confirm',
+    'pos.status.readySub':       'Transaction ready',
     'pos.status.empty':          'Cart is empty',
+    'pos.status.emptySub':       'Add products to continue',
     'pos.status.blocked':        'Sale blocked',
+    'pos.status.blockedSub':     'Insufficient balance or restricted account',
     'pos.status.restricted':     'Restricted account',
+    'pos.status.restrictedSub':  'This account does not allow sales',
     'pos.recentActivity':        'Recent activity',
     'pos.receipt.inmate':        'Inmate',
     'pos.receipt.operator':      'Operator',
@@ -1457,8 +1465,10 @@ function posUpdateCartStatus(total, after) {
 
   statusEl.className = 'pos-cart-status pos-status-' + state;
   var iconEl = statusEl.querySelector('.pos-status-icon');
-  if (iconEl) iconEl.innerHTML = state === 'ready' ? '&#10003;' : state === 'empty' ? '&#128722;' : '&#9888;';
+  if (iconEl) iconEl.innerHTML = state === 'ready' ? '&#10003;' : state === 'empty' ? '&#8709;' : '&#9888;';
   if (statusTxt) statusTxt.textContent = t('pos.status.' + state);
+  var subEl = document.getElementById('posCartStatusSub');
+  if (subEl) subEl.textContent = t('pos.status.' + state + 'Sub');
 
   if (confirmBtn) {
     confirmBtn.disabled = (state !== 'ready');

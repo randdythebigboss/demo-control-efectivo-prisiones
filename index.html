@@ -1054,12 +1054,15 @@
               <!-- Cart status box -->
               <div class="pos-cart-status pos-status-ready" id="posCartStatus">
                 <span class="pos-status-icon">&#10003;</span>
-                <span class="pos-status-text" id="posCartStatusText" data-i18n="pos.status.ready">Listo para confirmar</span>
+                <div class="pos-status-body">
+                  <span class="pos-status-text" id="posCartStatusText" data-i18n="pos.status.ready">Listo para confirmar</span>
+                  <span class="pos-status-sub" id="posCartStatusSub" data-i18n="pos.status.readySub">Transacci&#243;n v&#225;lida</span>
+                </div>
               </div>
 
               <!-- Actions -->
               <div class="pos-cart-actions">
-                <button class="btn btn-ghost pos-cancel-btn" style="flex:1" onclick="posClearCart()" data-i18n="btn.cancel">Cancelar</button>
+                <button class="btn pos-cancel-btn" style="flex:1" onclick="posClearCart()" data-i18n="btn.cancel">Cancelar</button>
                 <button class="btn btn-primary pos-confirm-btn" id="posConfirmBtn" style="flex:2"
                         onclick="posConfirmSale()" data-i18n="pos.confirmSale">Confirmar Venta</button>
               </div>
