@@ -3222,3 +3222,128 @@ ul { list-style: none; }
 .inv-panel { overflow: hidden; }
 .inv-mov-item:hover { background: #f8faff; }
 
+/* ══════════════════════════════════════════════════════════
+   BLOCK 12 — FINAL HARDENING PASS
+   ══════════════════════════════════════════════════════════ */
+
+/* ── Table card (inventory catalog + movements wrapper) ── */
+.table-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.inv-table-card {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.inv-table-card .data-table {
+  min-width: 680px;
+}
+
+/* ── Filter toolbar: responsive stacking ── */
+@media (max-width: 700px) {
+  .inv-filter-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px 14px;
+  }
+  .inv-ftb-fields {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .inv-ftb-group { width: 100%; }
+  .inv-ftb-grow  { min-width: 0; }
+  .inv-ftb-actions {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--clr-border);
+    padding-top: 12px;
+    margin-top: 4px;
+    justify-content: flex-end;
+  }
+  .inv-ftb-actions .btn { width: 100%; justify-content: center; }
+}
+
+/* ── Inventory KPI mobile tweak ── */
+@media (max-width: 480px) {
+  .inv-kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kpi-card { padding: 14px 12px 12px; gap: 6px; }
+  .kpi-value { font-size: 20px; }
+  .kpi-icon  { font-size: 18px; }
+}
+
+/* ── POS mobile improvements ── */
+@media (max-width: 680px) {
+  .pos-session-info { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .pos-product-grid { grid-template-columns: repeat(2, 1fr); }
+  .pos-favorites-row { flex-wrap: wrap; }
+  .pos-cart-totals  { padding: 12px 14px; }
+  .pos-total-value  { font-size: 22px; }
+}
+
+/* ── Replenishment layout mobile ── */
+@media (max-width: 700px) {
+  .inv-rep-summary-bar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .inv-rep-sb-chips { flex-wrap: wrap; }
+  .form-grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Focus-visible accessibility ── */
+:focus-visible {
+  outline: 2px solid var(--clr-brand);
+  outline-offset: 2px;
+}
+.fc:focus-visible,
+.btn:focus-visible,
+.nav-item:focus-visible,
+.nav-group-toggle:focus-visible,
+.nav-sub-item:focus-visible,
+.pos-cat-btn:focus-visible,
+.pos-qty-btn:focus-visible,
+.lang-btn:focus-visible {
+  outline: 2px solid var(--clr-brand);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(26,86,219,0.12);
+}
+
+/* ── Table header — consistent strong border ── */
+.inv-table-card .data-table thead th {
+  padding: 11px 14px;
+  border-bottom: 2px solid var(--clr-border);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+/* ── Button height consistency ── */
+.btn { min-height: 36px; }
+.btn-primary { min-height: 38px; }
+
+/* ── Badge consistency ── */
+.inv-badge { white-space: nowrap; }
+
+/* ── Replenishment suggest-item panel padding cleanup ── */
+.inv-rep-suggest-panel-body {
+  padding: 8px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Content area top padding on mobile ── */
+@media (max-width: 480px) {
+  .content-area { padding: 14px 12px 28px; }
+  .page-header  { flex-wrap: wrap; gap: 10px; }
+  .page-header h1 { font-size: 17px; }
+  .page-subtitle  { font-size: 12px; }
+}
+
+/* ── Smooth transitions on lang switch ── */
+[data-i18n] { transition: none; }
+

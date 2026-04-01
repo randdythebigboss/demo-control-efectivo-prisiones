@@ -295,8 +295,23 @@ const translations = {
     'search.user':        'Filtrar por usuario...',
 
     /* Filters */
-    'filter.allProvinces': 'Todas las provincias',
-    'filter.allOperations':'Todas las operaciones',
+    'filter.allProvinces':  'Todas las provincias',
+    'filter.allOperations': 'Todas las operaciones',
+    'filter.allCenters':    'Todos los centros',
+    'filter.ph.status':     '\u2014 Estado \u2014',
+    'filter.ph.type':       '\u2014 Tipo \u2014',
+    'filter.ph.center':     '\u2014 Centro \u2014',
+
+    /* Centers extended */
+    'center.central':       'Central (Almac\u00e9n)',
+
+    /* Inventory suggest item labels */
+    'inv.suggest.stock':    'Stock:',
+    'inv.suggest.reorder':  'Reorden:',
+    'inv.badge.urgent':     '\u26a0 Urgente',
+
+    /* Extra status */
+    'status.approved':      'Aprobado',
 
     /* Forms */
     'form.accountOpening':  'Nueva Apertura de Cuenta',
@@ -783,8 +798,23 @@ const translations = {
     'search.user':        'Filter by user...',
 
     /* Filters */
-    'filter.allProvinces': 'All provinces',
-    'filter.allOperations':'All operations',
+    'filter.allProvinces':  'All provinces',
+    'filter.allOperations': 'All operations',
+    'filter.allCenters':    'All centers',
+    'filter.ph.status':     '\u2014 Status \u2014',
+    'filter.ph.type':       '\u2014 Type \u2014',
+    'filter.ph.center':     '\u2014 Center \u2014',
+
+    /* Centers extended */
+    'center.central':       'Central (Warehouse)',
+
+    /* Inventory suggest item labels */
+    'inv.suggest.stock':    'Stock:',
+    'inv.suggest.reorder':  'Reorder:',
+    'inv.badge.urgent':     '\u26a0 Urgent',
+
+    /* Extra status */
+    'status.approved':      'Approved',
 
     /* Forms */
     'form.accountOpening':  'New Account Opening',

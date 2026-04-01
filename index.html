@@ -956,7 +956,7 @@
                   <div class="pos-prod-icon">&#129470;</div>
                   <div class="pos-prod-name">Jab&#243;n Palmolive</div>
                   <div class="pos-prod-price">RD$ 60</div>
-                  <div class="pos-prod-stock"><span data-i18n="pos.stock">Stock:</span> 22</div>
+                  <div class="pos-prod-stock pos-low-stock"><span data-i18n="pos.stock">Stock:</span> 6 &nbsp;<span class="pos-low-badge" data-i18n="pos.lowStock">Bajo</span></div>
                 </div>
                 <div class="pos-product-card" data-cat="hygiene" onclick="posAddItem(this,'Pasta dental','80')">
                   <div class="pos-prod-icon">&#129366;</div>
@@ -1317,7 +1317,7 @@
             <div class="inv-ftb-group">
               <label class="inv-ftb-label" data-i18n="inv.filter.status">Estado</label>
               <select class="fc">
-                <option>&#8212; Estado &#8212;</option>
+                <option data-i18n="filter.ph.status">&#8212; Estado &#8212;</option>
                 <option data-i18n="inv.status.active">Activo</option>
                 <option data-i18n="inv.status.lowStock">Stock bajo</option>
                 <option data-i18n="inv.status.outOfStock">Sin stock</option>
@@ -1330,7 +1330,7 @@
         </div>
 
         <!-- Product table -->
-        <div class="table-card">
+        <div class="table-card inv-table-card">
           <table class="data-table">
             <thead>
               <tr>
@@ -1532,7 +1532,7 @@
             <div class="inv-ftb-group">
               <label class="inv-ftb-label" data-i18n="inv.filter.type">Tipo</label>
               <select class="fc">
-                <option>&#8212; Tipo &#8212;</option>
+                <option data-i18n="filter.ph.type">&#8212; Tipo &#8212;</option>
                 <option data-i18n="inv.type.entry">Entrada</option>
                 <option data-i18n="inv.type.sale">Salida venta</option>
                 <option data-i18n="inv.type.adjustment">Ajuste</option>
@@ -1546,7 +1546,7 @@
             <div class="inv-ftb-group">
               <label class="inv-ftb-label" data-i18n="inv.filter.center">Centro</label>
               <select class="fc">
-                <option>&#8212; Centro &#8212;</option>
+                <option data-i18n="filter.ph.center">&#8212; Centro &#8212;</option>
                 <option data-i18n="center.laVictoria">La Victoria</option>
                 <option data-i18n="center.najayo">Najayo</option>
                 <option data-i18n="center.rafeyH">Rafey Hombres</option>
@@ -1559,7 +1559,7 @@
         </div>
 
         <!-- Movements table -->
-        <div class="table-card">
+        <div class="table-card inv-table-card">
           <table class="data-table">
             <thead>
               <tr>
@@ -1732,7 +1732,7 @@
                   <option data-i18n="center.laVictoria">La Victoria</option>
                   <option data-i18n="center.najayo">Najayo</option>
                   <option data-i18n="center.rafeyH">Rafey Hombres</option>
-                  <option>Central (Almac&#233;n)</option>
+                  <option data-i18n="center.central">Central (Almac&#233;n)</option>
                 </select>
               </div>
               <div class="form-group">
@@ -1775,34 +1775,34 @@
               <div class="inv-panel-header">
                 <span class="inv-panel-title" data-i18n="inv.rep.suggested">Reposiciones sugeridas</span>
               </div>
-              <div style="padding:12px 16px; display:flex; flex-direction:column; gap:0">
+              <div class="inv-rep-suggest-panel-body">
                 <div class="inv-rep-suggest-item">
                   <div>
                     <div class="inv-rep-suggest-name">Leche Entera 1L</div>
-                    <div class="inv-rep-suggest-qty muted">Stock: 0 &bull; Reorden: 25</div>
+                    <div class="inv-rep-suggest-qty muted"><span data-i18n="inv.suggest.stock">Stock:</span> 0 &bull; <span data-i18n="inv.suggest.reorder">Reorden:</span> 25</div>
                   </div>
-                  <span class="inv-badge inv-badge-outofstock">&#9888; Urgente</span>
+                  <span class="inv-badge inv-badge-outofstock" data-i18n="inv.badge.urgent">&#9888; Urgente</span>
                 </div>
                 <div class="inv-rep-suggest-item">
                   <div>
                     <div class="inv-rep-suggest-name">Desodorante Rexona</div>
-                    <div class="inv-rep-suggest-qty muted">Stock: 0 &bull; Reorden: 10</div>
+                    <div class="inv-rep-suggest-qty muted"><span data-i18n="inv.suggest.stock">Stock:</span> 0 &bull; <span data-i18n="inv.suggest.reorder">Reorden:</span> 10</div>
                   </div>
-                  <span class="inv-badge inv-badge-outofstock">&#9888; Urgente</span>
+                  <span class="inv-badge inv-badge-outofstock" data-i18n="inv.badge.urgent">&#9888; Urgente</span>
                 </div>
                 <div class="inv-rep-suggest-item">
                   <div>
                     <div class="inv-rep-suggest-name">Sardinas en lata</div>
-                    <div class="inv-rep-suggest-qty muted">Stock: 4 &bull; Reorden: 15</div>
+                    <div class="inv-rep-suggest-qty muted"><span data-i18n="inv.suggest.stock">Stock:</span> 4 &bull; <span data-i18n="inv.suggest.reorder">Reorden:</span> 15</div>
                   </div>
-                  <span class="inv-badge inv-badge-lowstock">Stock bajo</span>
+                  <span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span>
                 </div>
                 <div class="inv-rep-suggest-item">
                   <div>
                     <div class="inv-rep-suggest-name">Jab&#243;n Rey</div>
-                    <div class="inv-rep-suggest-qty muted">Stock: 8 &bull; Reorden: 20</div>
+                    <div class="inv-rep-suggest-qty muted"><span data-i18n="inv.suggest.stock">Stock:</span> 8 &bull; <span data-i18n="inv.suggest.reorder">Reorden:</span> 20</div>
                   </div>
-                  <span class="inv-badge inv-badge-lowstock">Stock bajo</span>
+                  <span class="inv-badge inv-badge-lowstock" data-i18n="inv.status.lowStock">Stock bajo</span>
                 </div>
               </div>
             </div>
@@ -1839,7 +1839,7 @@
                     <td class="mono muted">REP-0047</td>
                     <td>Desodorante Rexona</td>
                     <td class="mono">24</td>
-                    <td><span class="badge badge-deposit" data-i18n="status.completed">Aprobado</span></td>
+                    <td><span class="badge badge-deposit" data-i18n="status.approved">Aprobado</span></td>
                   </tr>
                 </tbody>
               </table>
