@@ -1145,7 +1145,7 @@
         </div>
 
         <!-- KPI row -->
-        <div class="kpi-row">
+        <div class="kpi-grid inv-kpi-grid">
           <div class="kpi-card kpi-blue">
             <div class="kpi-icon">&#128230;</div>
             <div class="kpi-value">11</div>
@@ -1297,23 +1297,36 @@
           <button class="btn btn-primary" data-i18n="btn.addProduct">Agregar Producto</button>
         </div>
 
-        <!-- Filter bar -->
-        <div class="inv-filter-bar">
-          <input type="text" class="fc" style="flex:1;min-width:180px" placeholder="Buscar producto..." data-i18n-placeholder="btn.search">
-          <select class="fc">
-            <option data-i18n="pos.cat.all">Todos</option>
-            <option data-i18n="pos.cat.food">Alimentos</option>
-            <option data-i18n="pos.cat.drinks">Bebidas</option>
-            <option data-i18n="pos.cat.hygiene">Higiene</option>
-            <option data-i18n="pos.cat.other">Otros</option>
-          </select>
-          <select class="fc">
-            <option>— Estado —</option>
-            <option data-i18n="inv.status.active">Activo</option>
-            <option data-i18n="inv.status.lowStock">Stock bajo</option>
-            <option data-i18n="inv.status.outOfStock">Sin stock</option>
-          </select>
-          <button class="btn btn-ghost" data-i18n="btn.search">Buscar</button>
+        <!-- Filter toolbar -->
+        <div class="inv-filter-toolbar">
+          <div class="inv-ftb-fields">
+            <div class="inv-ftb-group inv-ftb-grow">
+              <label class="inv-ftb-label" data-i18n="inv.filter.search">Buscar</label>
+              <input type="text" class="fc" placeholder="Nombre, c&#243;digo..." data-i18n-placeholder="btn.search">
+            </div>
+            <div class="inv-ftb-group">
+              <label class="inv-ftb-label" data-i18n="inv.filter.category">Categor&#237;a</label>
+              <select class="fc">
+                <option data-i18n="pos.cat.all">Todos</option>
+                <option data-i18n="pos.cat.food">Alimentos</option>
+                <option data-i18n="pos.cat.drinks">Bebidas</option>
+                <option data-i18n="pos.cat.hygiene">Higiene</option>
+                <option data-i18n="pos.cat.other">Otros</option>
+              </select>
+            </div>
+            <div class="inv-ftb-group">
+              <label class="inv-ftb-label" data-i18n="inv.filter.status">Estado</label>
+              <select class="fc">
+                <option>&#8212; Estado &#8212;</option>
+                <option data-i18n="inv.status.active">Activo</option>
+                <option data-i18n="inv.status.lowStock">Stock bajo</option>
+                <option data-i18n="inv.status.outOfStock">Sin stock</option>
+              </select>
+            </div>
+          </div>
+          <div class="inv-ftb-actions">
+            <button class="btn btn-ghost" data-i18n="btn.search">Buscar</button>
+          </div>
         </div>
 
         <!-- Product table -->
@@ -1513,23 +1526,36 @@
           <button class="btn btn-primary" data-i18n="btn.exportMovements">Exportar Movimientos</button>
         </div>
 
-        <!-- Filter bar -->
-        <div class="inv-filter-bar">
-          <select class="fc">
-            <option>— Tipo —</option>
-            <option data-i18n="inv.type.entry">Entrada</option>
-            <option data-i18n="inv.type.sale">Salida venta</option>
-            <option data-i18n="inv.type.adjustment">Ajuste</option>
-            <option data-i18n="inv.type.transfer">Traslado</option>
-          </select>
-          <input type="date" class="fc" value="2026-03-31">
-          <select class="fc">
-            <option>— Centro —</option>
-            <option data-i18n="center.laVictoria">La Victoria</option>
-            <option data-i18n="center.najayo">Najayo</option>
-            <option data-i18n="center.rafeyH">Rafey Hombres</option>
-          </select>
-          <button class="btn btn-ghost" data-i18n="btn.search">Buscar</button>
+        <!-- Filter toolbar -->
+        <div class="inv-filter-toolbar">
+          <div class="inv-ftb-fields">
+            <div class="inv-ftb-group">
+              <label class="inv-ftb-label" data-i18n="inv.filter.type">Tipo</label>
+              <select class="fc">
+                <option>&#8212; Tipo &#8212;</option>
+                <option data-i18n="inv.type.entry">Entrada</option>
+                <option data-i18n="inv.type.sale">Salida venta</option>
+                <option data-i18n="inv.type.adjustment">Ajuste</option>
+                <option data-i18n="inv.type.transfer">Traslado</option>
+              </select>
+            </div>
+            <div class="inv-ftb-group">
+              <label class="inv-ftb-label" data-i18n="inv.filter.date">Fecha</label>
+              <input type="date" class="fc" value="2026-03-31">
+            </div>
+            <div class="inv-ftb-group">
+              <label class="inv-ftb-label" data-i18n="inv.filter.center">Centro</label>
+              <select class="fc">
+                <option>&#8212; Centro &#8212;</option>
+                <option data-i18n="center.laVictoria">La Victoria</option>
+                <option data-i18n="center.najayo">Najayo</option>
+                <option data-i18n="center.rafeyH">Rafey Hombres</option>
+              </select>
+            </div>
+          </div>
+          <div class="inv-ftb-actions">
+            <button class="btn btn-ghost" data-i18n="btn.search">Buscar</button>
+          </div>
         </div>
 
         <!-- Movements table -->

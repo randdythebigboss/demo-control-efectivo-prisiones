@@ -3017,10 +3017,208 @@ ul { list-style: none; }
 .inv-filter-bar { padding: 14px 16px; background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius); margin-bottom: 20px; }
 .inv-filter-bar .fc { min-width: 140px; }
 
-/* ── POS cancel button — red tint on hover ── */
-.pos-cart-actions .pos-cancel-btn:hover {
-  background: #fff1f1;
-  border-color: #fca5a5;
-  color: #b91c1c;
+/* ══════════════════════════════════════════════════════════
+   BLOCK 11 — VISUAL REFINEMENT PASS
+   ══════════════════════════════════════════════════════════ */
+
+/* ── P1: Inventory KPI grid — 4-column horizontal row ── */
+.inv-kpi-grid {
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 0;
 }
+@media (max-width: 1000px) {
+  .inv-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 500px) {
+  .inv-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── P1: Overview panel table sizing ── */
+.inv-panel .data-table thead th { padding: 10px 14px; font-size: 11px; }
+.inv-panel .data-table tbody td { padding: 10px 14px; }
+
+/* ── P2/P3: Filter toolbar ── */
+.inv-filter-toolbar {
+  display: flex;
+  align-items: flex-end;
+  gap: 0;
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow);
+}
+.inv-ftb-fields {
+  display: flex;
+  flex: 1;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.inv-ftb-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.inv-ftb-grow { flex: 1; min-width: 160px; }
+.inv-ftb-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--clr-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.inv-ftb-actions {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+  margin-left: 18px;
+  padding-left: 18px;
+  border-left: 1px solid var(--clr-border);
+  flex-shrink: 0;
+}
+
+/* ── P2: Form group + label (replenishment form) ── */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.form-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--clr-text-2);
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+}
+
+/* ── P2: Catalog — styled "Ver" action link ── */
+#section-inventory-catalog .btn-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--clr-brand);
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 4px;
+  padding: 4px 10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+#section-inventory-catalog .btn-link:hover {
+  background: #dbeafe;
+  border-color: var(--clr-brand);
+  color: var(--clr-brand);
+}
+
+/* ── P2: Catalog table — tighter cell padding ── */
+#section-inventory-catalog .data-table tbody td { padding: 11px 14px; }
+#section-inventory-catalog .data-table thead th { padding: 10px 14px; border-bottom: 2px solid var(--clr-border); }
+
+/* ── P2: Alert row left-border (override to be on the row, not first-child) ── */
+.inv-row-alert    { border-left: 3px solid #f59e0b; }
+.inv-row-critical { border-left: 3px solid var(--clr-red); }
+
+/* ── P3: Movements table — tighter cell padding ── */
+#section-inventory-movements .data-table tbody td { padding: 11px 14px; }
+#section-inventory-movements .data-table thead th { padding: 10px 14px; border-bottom: 2px solid var(--clr-border); }
+
+/* ── P3: Reference column — intentional pill treatment ── */
+#section-inventory-movements .data-table td:nth-child(7) {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--clr-brand);
+  letter-spacing: 0.2px;
+}
+
+/* ── P4: Replenishment — widen form, reduce side panel ── */
+.inv-rep-layout { grid-template-columns: 1fr 320px; }
+@media (max-width: 1060px) { .inv-rep-layout { grid-template-columns: 1fr; } }
+
+/* ── P4: Form card — remove max-width constraint within replenishment ── */
+#section-inventory-replenishment .form-card { max-width: none; padding: 24px 28px; }
+.form-section-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--clr-text);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--clr-border);
+}
+
+/* ── P5: POS status box — more prominent state indicator ── */
+.pos-cart-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 16px 12px;
+  padding: 11px 14px;
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+.pos-status-ready {
+  background: linear-gradient(to right, #f0fdf4, #f8fff8);
+  border: 1.5px solid #4ade80;
+  color: #15803d;
+}
+.pos-status-ready .pos-status-icon {
+  background: #16a34a;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 800;
+}
+.pos-status-empty  { border: 1.5px solid #bfdbfe; }
+.pos-status-blocked { border: 1.5px solid #fca5a5; }
+.pos-status-text { font-weight: 700; font-size: 12.5px; letter-spacing: 0.1px; }
+
+/* ── P5: POS action area — decisive bottom zone ── */
+.pos-cart-actions {
+  padding: 14px 16px 18px;
+  gap: 10px;
+  border-top: 1.5px solid var(--clr-border);
+  background: var(--clr-surface);
+}
+
+/* ── P5: Cancel button — clean outlined ghost ── */
+.pos-cancel-btn {
+  height: 44px;
+  font-size: 13px;
+  font-weight: 600;
+  border: 1.5px solid var(--clr-border) !important;
+  color: var(--clr-text-2) !important;
+  background: transparent !important;
+  border-radius: var(--radius) !important;
+  box-shadow: none !important;
+  transition: background var(--transition), border-color var(--transition), color var(--transition);
+}
+.pos-cancel-btn:hover,
+.pos-cart-actions .pos-cancel-btn:hover {
+  background: #fff1f1 !important;
+  border-color: #fca5a5 !important;
+  color: #b91c1c !important;
+}
+
+/* ── P5: Confirm button — dominant primary action ── */
+.pos-confirm-btn {
+  height: 44px;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  border-radius: var(--radius);
+  box-shadow: 0 3px 14px rgba(26, 86, 219, 0.28);
+}
+.pos-confirm-btn:not([disabled]):hover {
+  box-shadow: 0 5px 20px rgba(26, 86, 219, 0.38);
+  transform: translateY(-1px);
+}
+
+/* ── P6: Micro-polish ── */
+.inv-filter-toolbar .fc:focus { border-color: var(--clr-brand); }
+.inv-panel { overflow: hidden; }
+.inv-mov-item:hover { background: #f8faff; }
 

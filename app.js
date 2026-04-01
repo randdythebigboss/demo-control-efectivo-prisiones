@@ -281,6 +281,14 @@ const translations = {
     'inv.priority.hint.low':       'Baja \u2014 sin urgencia inmediata',
     'inv.rep.notes.placeholder':   'Motivo de la solicitud, instrucciones especiales...',
 
+    /* Inventory filter toolbar labels */
+    'inv.filter.search':   'Buscar',
+    'inv.filter.category': 'Categor\u00eda',
+    'inv.filter.status':   'Estado',
+    'inv.filter.type':     'Tipo',
+    'inv.filter.date':     'Fecha',
+    'inv.filter.center':   'Centro',
+
     /* Search placeholders */
     'search.placeholder': 'Buscar...',
     'search.inmate':      'C\u00e9dula, nombre o c\u00f3digo...',
@@ -760,6 +768,14 @@ const translations = {
     'inv.priority.hint.medium':    'Medium \u2014 replenish within the next few days',
     'inv.priority.hint.low':       'Low \u2014 no immediate urgency',
     'inv.rep.notes.placeholder':   'Reason for request, special instructions...',
+
+    /* Inventory filter toolbar labels */
+    'inv.filter.search':   'Search',
+    'inv.filter.category': 'Category',
+    'inv.filter.status':   'Status',
+    'inv.filter.type':     'Type',
+    'inv.filter.date':     'Date',
+    'inv.filter.center':   'Center',
 
     /* Search placeholders */
     'search.placeholder': 'Search...',
